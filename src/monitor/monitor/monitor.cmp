@@ -1,0 +1,15 @@
+	component monitor is
+		port (
+			clk_clk          : in  std_logic                    := 'X';             -- clk
+			prg_clock_export : out std_logic;                                       -- export
+			prg_ma_export    : out std_logic_vector(7 downto 0);                    -- export
+			prg_rd_export    : in  std_logic_vector(7 downto 0) := (others => 'X'); -- export
+			prg_wd_export    : out std_logic_vector(7 downto 0);                    -- export
+			prg_we_export    : out std_logic;                                       -- export
+			reset_reset_n    : in  std_logic                    := 'X';             -- reset_n
+			reset_1_export   : out std_logic;                                       -- export
+			uart_rxd         : in  std_logic                    := 'X';             -- rxd
+			uart_txd         : out std_logic                                        -- txd
+		);
+	end component monitor;
+
