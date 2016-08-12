@@ -87,5 +87,3 @@ module memory(
     .y          (RD));
     
 endmodule
-
-  

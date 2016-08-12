@@ -14,8 +14,8 @@ module controller (
   output wire       we,
   // end sequence
   output wire       end_sq,
-  // halt signal
-  output wire       halt
+  // pause cycle counter
+  output wire       pause_cc
   );
   
   reg [11:0] state;
@@ -29,7 +29,7 @@ module controller (
     .aluop    (aluop),
     .we       (we),
     .end_sq   (end_sq),
-    .halt     (halt));
+    .pause_cc (pause_cc));
   
   always @ (negedge clock, posedge reset) begin
     if (reset) begin

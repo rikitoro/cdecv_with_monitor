@@ -15,7 +15,7 @@ module datapath(
   output wire [2:0] SZCy,     // from FLG {S, Z, Cy}
   
   // debug monitor
-  input wire  [2:0] dbg_addr, // {7:FF, 6:Xbus, 5:R, 4:T, 3:C, 2:B, 1:A, 0:PC}
+  input wire  [2:0] dbg_addr, // {7:Xbus, 6:FLG, 5:R, 4:T, 3:C, 2:B, 1:A, 0:PC}
   output wire [7:0] dbg_data
   );
   
@@ -125,17 +125,18 @@ module datapath(
     .y    (Xbus));
     
     
-  // for debug monitor
+  ///// for debug interface
+
   mux8 dbg_mux8(
-    .sel  (dbg_addr), // {7:FF, 6:Xbus, 5:R, 4:T, 3:C, 2:B, 1:A, 0:PC}
+    .sel  (dbg_addr), // {7:Xbus, 6:FLG, 5:R, 4:T, 3:C, 2:B, 1:A, 0:PC}
     .d0   (PC),
     .d1   (A),
     .d2   (B),
     .d3   (C),
     .d4   (T),
     .d5   (R),
-    .d6   (Xbus),
-    .d7   (8'hff),
+    .d6   (FLG),
+    .d7   (Xbus),
     .y    (dbg_data));
     
 endmodule

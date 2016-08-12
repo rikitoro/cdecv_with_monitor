@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="4c2b4b37dc227126882d"/>
+    <hash md5_digest_80b="9e23dbf8b41ceb73ec97"/>
   </project>
   <file_info>
     <file device="5CEBA4F23C7" path="top.sof" usercode="0xFFFFFFFF"/>
@@ -99,7 +99,7 @@
     </sld_info>
     <sld_info hpath="monitor:monitor" name="monitor">
       <assignment_values>
-        <assignment_value text="QSYS_NAME monitor HAS_SOPCINFO 1 GENERATION_ID 1470910295"/>
+        <assignment_value text="QSYS_NAME monitor HAS_SOPCINFO 1 GENERATION_ID 1471000032"/>
       </assignment_values>
       <parameters/>
     </sld_info>
