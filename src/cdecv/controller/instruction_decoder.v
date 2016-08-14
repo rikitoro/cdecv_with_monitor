@@ -86,10 +86,10 @@ module instruction_decoder(
       {`state_ST0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, (`xdstMA|`xdstR), `aluopINC , 3'b000};
       {`state_ST1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b000};
       {`state_ST2,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcRD, `xdstMA         , `aluopZERO, 3'b000};
-      {`state_ST3,  8'bxxxx_01xx, 3'bxxx}:  control = {`xsrcA , `xdstWD         , `aluopZERO, 3'b100}; // ST A, adrs8
-      {`state_ST3,  8'bxxxx_10xx, 3'bxxx}:  control = {`xsrcB , `xdstWD         , `aluopZERO, 3'b100}; // ST B, adrs8
-      {`state_ST3,  8'bxxxx_11xx, 3'bxxx}:  control = {`xsrcC , `xdstWD         , `aluopZERO, 3'b100}; // ST C, adrs8
-      {`state_ST4,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b010}; 
+      {`state_ST3,  8'bxxxx_01xx, 3'bxxx}:  control = {`xsrcA , `xdstWD         , `aluopZERO, 3'b000}; // ST A, adrs8
+      {`state_ST3,  8'bxxxx_10xx, 3'bxxx}:  control = {`xsrcB , `xdstWD         , `aluopZERO, 3'b000}; // ST B, adrs8
+      {`state_ST3,  8'bxxxx_11xx, 3'bxxx}:  control = {`xsrcC , `xdstWD         , `aluopZERO, 3'b000}; // ST C, adrs8
+      {`state_ST4,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b110}; 
       //
       // HALT
       {`state_HALT, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b011}; 

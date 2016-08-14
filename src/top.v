@@ -27,7 +27,8 @@ module top(
   output wire [6:0] dbg_data_hex0,      // HEX0
   output wire       end_sq_led,         // LEDR8
   output wire       clock_led,          // LEDR9
-  output wire [2:0] SZCy_led,           // HEX5_0, HEX5_6, HEX5_3
+  output wire [2:0] SZCy_led,           // HEX5_0, HEX5_6, HEX5_3 (S, Z, Cy)
+  output wire       we_led,             // HEX4_3
   // monitor <-> PC (serial)
   input wire        uart_rxd,           // GPIO 0 pin 36
   output wire       uart_txd            // GIPO 0 pin 38
@@ -195,6 +196,9 @@ module top(
   
   // SZCy (HEX5_0, 6, 3)
   assign SZCy_led = ~SZCy;
+  
+  // we
+  assign we_led = we;
   
   // dbg data (HEX3-0, SW7-4) (DE0 interface)
   wire [15:0] dbg_data;
