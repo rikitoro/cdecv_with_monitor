@@ -198,7 +198,7 @@ module top(
   assign SZCy_led = ~SZCy;
   
   // we
-  assign we_led = we;
+  assign we_led = ~we;
   
   // dbg data (HEX3-0, SW7-4) (DE0 interface)
   wire [15:0] dbg_data;
