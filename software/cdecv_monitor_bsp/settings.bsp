@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>2016/08/14 22:00:04</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1471179604682</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>2016/08/14 22:53:55</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1471182835383</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\yoshiaki\devel\quartus_workspace\cdecv_with_monitor\software\cdecv_monitor_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\monitor.sopcinfo</SopcDesignFile>

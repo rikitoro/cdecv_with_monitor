@@ -18,10 +18,10 @@ module memory(
   );
   
   
-  //// ram $0x00~0xFD
-  
+  //// ram $0x00~0xFE  
   wire        we_ram;
   wire [7:0]  RD_ram;
+  
   dualport_ram  dualport_ram(
     .clock_a    (clock),
     .wren_a     (we_ram),
@@ -35,50 +35,31 @@ module memory(
     .data_b     (prg_WD),
     .q_b        (prg_RD));
 
-  //// output port0 $0xFE
-  wire        we_oport0;
-  wire [7:0]  RD_oport0;
-  output_device output_device0(
+  //// IO port0 $0xFF  
+  wire        we_io;
+  wire [7:0]  RD_io;
+
+  io_device io_device0(
     .clock      (clock),
-    .we         (we_oport0),
+    .we         (we_io),
     .wd         (WD),
-    .rd         (RD_oport0),
-    .oport      (oport0));
-  
-  //// input port0 $0xFF  
-  wire        we_iport0;
-  wire [7:0]  RD_iport0;
-  input_device input_device0(
-    .clock      (clock),
-    .we         (we_iport0),
-    .wd         (WD),
-    .rd         (RD_iport0),
-    .iport      (iport0)
+    .rd         (RD_io),
+    .iport      (iport0),
+    .oport      (oport0)
     );
   
   
   //// address decoder
-  //// $0x00 ~ $0xFD  : ram
-  //// $xFE           : oport0
-  //// $xFF           : iport0
+  //// $0x00 ~ $0xFE  : ram
+  //// $xFF           : IOport0
   wire        sel_ram_io;
-  wire        sel_o_i;
-  wire [7:0]  RD_io;
-  
   address_decoder address_decoder(
     .we         (we),
     .MA         (MA),
     .we_ram     (we_ram),
-    .we_oport0  (we_oport0),
-    .we_iport0  (we_iport0),
+    .we_io      (we_io),
     .sel_ram_io (sel_ram_io),
-    .sel_o_i    (sel_o_i));
-    
-  mux2 mux_o_i(
-    .sel        (sel_o_i),
-    .d0         (RD_oport0),
-    .d1         (RD_iport0),
-    .y          (RD_io));
+    );
     
   mux2 mux_ram_io(
     .sel        (sel_ram_io),
