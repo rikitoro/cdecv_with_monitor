@@ -485,7 +485,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : U12       :        :                   :      
 iport_sw[0]                  : U13       : input  : 2.5 V             :         : 4A        : Y              
 VCCIO4A                      : U14       : power  :                   : 2.5V    : 4A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : U15       :        :                   :         : 4A        :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : U16       :        :                   :         : 4A        :                
+we_led                       : U16       : output : 2.5 V             :         : 4A        : Y              
 dbg_data_hex3[4]             : U17       : output : 2.5 V             :         : 4A        : Y              
 VCCA_FPLL                    : U18       : power  :                   : 2.5V    :           :                
 VCCIO4A                      : U19       : power  :                   : 2.5V    : 4A        :                
