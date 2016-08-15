@@ -24,24 +24,8 @@
 `define xdstR    10'b01_0000_0000
 `define xdstFLG  10'b10_0000_0000
 
-//  aluop | operation
-// -------+-------------------
-//   0000 | a
-//   0001 | b
-//   0010 | ~a
-//   0011 | ~b
-//   0100 | a & b
-//   0101 | a | b
-//   0110 | a ^ b
-//   0111 | 8'b0000_0000
-//   1000 | a + 1
-//   1001 | a - 1
-//   1010 | a + b
-//   1011 | a - b
-//   1100 | a + b + Cy_in
-//   1101 | a - b - Cy_in
-//   1110 | a << 1 (shift left)
-//   1111 | a >> 1 (shift right)
+// aluop
+
 `define aluopZERO  4'b0111
 `define aluopNOT   4'b0010
 `define aluopAND   4'b0100
@@ -66,7 +50,7 @@ module instruction_decoder(
   output wire         pause_cc
   );
     
-  reg [20:0] control;
+  reg [19:0] control;
   assign {xsrc, xdst, aluop, we, end_sq, pause_cc} = control;
   
   always @ (*) begin
@@ -105,12 +89,61 @@ module instruction_decoder(
       {`state_ST3,  8'bxxxx_01xx, 3'bxxx}:  control = {`xsrcA , `xdstWD         , `aluopZERO, 3'b000}; // ST A, adrs8
       {`state_ST3,  8'bxxxx_10xx, 3'bxxx}:  control = {`xsrcB , `xdstWD         , `aluopZERO, 3'b000}; // ST B, adrs8
       {`state_ST3,  8'bxxxx_11xx, 3'bxxx}:  control = {`xsrcC , `xdstWD         , `aluopZERO, 3'b000}; // ST C, adrs8
-      {`state_ST4,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b110}; 
+      {`state_ST4,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b110};
+      //  
+      // ADD reg
+      {`state_ADD0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // ADD A
+      {`state_ADD0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // ADD B
+      {`state_ADD0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // ADD C
+      {`state_ADD1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopADD , 3'b000};
+      {`state_ADD2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
+      //  
+      // ADC reg
+      {`state_ADC0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // ADC A
+      {`state_ADC0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // ADC B
+      {`state_ADC0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // ADC C
+      {`state_ADC1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopADC , 3'b000};
+      {`state_ADC2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
       //
+      // SUB reg
+      {`state_SUB0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // SUB A
+      {`state_SUB0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // SUB B
+      {`state_SUB0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // SUB C
+      {`state_SUB1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopSUB , 3'b000};
+      {`state_SUB2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
+      //
+      // SBB reg
+      {`state_SBB0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // SBB A
+      {`state_SBB0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // SBB B
+      {`state_SBB0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // SBB C
+      {`state_SBB1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopSBB , 3'b000};
+      {`state_SBB2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
+      //
+      // AND reg
+      {`state_AND0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // AND A
+      {`state_AND0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // AND B
+      {`state_AND0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // AND C
+      {`state_AND1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopAND , 3'b000};
+      {`state_AND2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
+      //
+      // OR reg
+      {`state_OR0,  8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // OR A
+      {`state_OR0,  8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // OR B
+      {`state_OR0,  8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // OR C
+      {`state_OR1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopOR  , 3'b000};
+      {`state_OR2,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
+      //
+      // EOR reg
+      {`state_EOR0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstT          , `aluopZERO, 3'b000}; // EOR A
+      {`state_EOR0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstT          , `aluopZERO, 3'b000}; // EOR B
+      {`state_EOR0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // EOR C
+      {`state_EOR1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopEOR , 3'b000};
+      {`state_EOR2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
+      
       // HALT
       {`state_HALT, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b011}; 
       //
-      default:                              control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b000};
+      default:                              control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b010};
     endcase   
   end
   
