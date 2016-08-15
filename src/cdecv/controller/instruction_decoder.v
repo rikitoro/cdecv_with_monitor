@@ -24,19 +24,35 @@
 `define xdstR    10'b01_0000_0000
 `define xdstFLG  10'b10_0000_0000
 
-// aluop
-`define aluopZERO  5'b00000
-`define aluopADD   5'b01000
-`define aluopADC   5'b01010
-`define aluopSUB   5'b01011
-`define aluopSBB   5'b01101
-`define aluopAND   5'b10000
-`define aluopOR    5'b10001
-`define aluopEOR   5'b10010
-`define aluopINC   5'b01110
-`define aluopDEC   5'b01111
-`define aluopNOT   5'b10011
-
+//  aluop | operation
+// -------+-------------------
+//   0000 | a
+//   0001 | b
+//   0010 | ~a
+//   0011 | ~b
+//   0100 | a & b
+//   0101 | a | b
+//   0110 | a ^ b
+//   0111 | 8'b0000_0000
+//   1000 | a + 1
+//   1001 | a - 1
+//   1010 | a + b
+//   1011 | a - b
+//   1100 | a + b + Cy_in
+//   1101 | a - b - Cy_in
+//   1110 | a << 1 (shift left)
+//   1111 | a >> 1 (shift right)
+`define aluopZERO  4'b0111
+`define aluopNOT   4'b0010
+`define aluopAND   4'b0100
+`define aluopOR    4'b0101
+`define aluopEOR   4'b0110
+`define aluopINC   4'b1000
+`define aluopDEC   4'b1001
+`define aluopADD   4'b1010
+`define aluopSUB   4'b1011
+`define aluopADC   4'b1100
+`define aluopSBB   4'b1101
 
 module instruction_decoder(
   input wire  [11:0]  state,
@@ -44,7 +60,7 @@ module instruction_decoder(
   input wire  [2:0]   SZCy,
   output wire [2:0]   xsrc,
   output wire [9:0]   xdst,
-  output wire [4:0]   aluop,
+  output wire [3:0]   aluop,
   output wire         we,
   output wire         end_sq,
   output wire         pause_cc
@@ -56,7 +72,7 @@ module instruction_decoder(
   always @ (*) begin
     casex ({state, I, SZCy})
       // reset
-      {`state_R,    8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b000};
+      {`state_R,    8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b001};
       // fetch
       {`state_F0,   8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, (`xdstMA|`xdstR), `aluopINC , 3'b000};
       {`state_F1,   8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b000};

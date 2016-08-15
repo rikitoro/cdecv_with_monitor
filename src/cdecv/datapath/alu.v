@@ -1,7 +1,28 @@
 `default_nettype none
 
+//  Function of alu
+//
+//  aluop | operation
+// -------+-------------------
+//   0000 | a
+//   0001 | b
+//   0010 | ~a
+//   0011 | ~b
+//   0100 | a & b
+//   0101 | a | b
+//   0110 | a ^ b
+//   0111 | 8'b0000_0000
+//   1000 | a + 1
+//   1001 | a - 1
+//   1010 | a + b
+//   1011 | a - b
+//   1100 | a + b + Cy_in
+//   1101 | a - b - Cy_in
+//   1110 | a << 1 (shift left)
+//   1111 | a >> 1 (shift right)
+
 module alu(
-  input wire  [4:0] aluop,
+  input wire  [3:0] aluop,
   input wire  [7:0] a,
   input wire  [7:0] b,
   input wire        Cy_in,
@@ -20,29 +41,22 @@ module alu(
 
   always @ (*) begin
     casex (aluop) 
-      5'b00000: result1 = 8'h00;
-      5'b00001: result1 = a;
-      5'b00010: result1 = b;
-      //
-      5'b01000: result1 = a + b;
-      5'b01001: result1 = a + b + 1'b1;
-      5'b01010: result1 = a + b + Cy_in;
-      5'b01011: result1 = a - b;
-      5'b01100: result1 = a - b - 1'b1;
-      5'b01101: result1 = a - b - Cy_in;
-      5'b01110: result1 = a + 1'b1;
-      5'b01111: result1 = a - 1'b1;
-      //
-      5'b10000: result1 = a & b;
-      5'b10001: result1 = a | b;
-      5'b10010: result1 = a ^ b;
-      5'b10011: result1 = ~a;
-      5'b10100: result1 = ~b;
-      //
-      5'b11000: result1 = {1'b0, 1'b0, a[7:1]}; // shift right
-      5'b11011: result1 = {a[7:0], 1'b0};       // shift left
-      //
-      default:  result1 = 8'h00;
+      4'b0000: result1 = a;
+      4'b0001: result1 = b;
+      4'b0010: result1 = ~a;
+      4'b0011: result1 = ~b;
+      4'b0100: result1 = a & b;
+      4'b0101: result1 = a | b;
+      4'b0110: result1 = a ^ b;
+      4'b0111: result1 = 8'b0000_0000;
+      4'b1000: result1 = a + 1'b1;
+      4'b1001: result1 = a - 1'b1;
+      4'b1010: result1 = a + b;
+      4'b1011: result1 = a - b;
+      4'b1100: result1 = a + b + Cy_in;
+      4'b1101: result1 = a - b - Cy_in;
+      4'b1110: result1 = {a, 1'b0};
+      4'b1111: result1 = {2'b00, a[7:1]};  
     endcase
   end
 endmodule

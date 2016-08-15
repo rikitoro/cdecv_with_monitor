@@ -534,7 +534,7 @@ int main()
     818c:	000081a8 	cmpgeui	zero,zero,518
     8190:	000081b0 	cmpltui	zero,zero,518
     8194:	000081b8 	rdprs	zero,zero,518
-    8198:	000081c0 	call	81c <__alt_mem_onchip_memory-0x77e4>
+    8198:	000081c0 	call	81c <__reset-0x77e4>
     819c:	000081cc 	andi	zero,zero,519
       case MONITOR_COMMAND_AR:  // assert reset
         do_AR();            break;

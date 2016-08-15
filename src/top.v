@@ -92,7 +92,7 @@ module top(
   // datapath <=> controller
   wire [2:0]  xsrc;
   wire [9:0]  xdst;
-  wire [4:0]  aluop;
+  wire [3:0]  aluop;
   wire [7:0]  I;
   wire [2:0]  SZCy;
   // controller -> memory
@@ -214,7 +214,7 @@ module top(
     .d3({ 8'b0000_0000        , I }),
     .d4({13'b0000_0000_0000_0 , xsrc}),
     .d5({ 6'b0000_00          , xdst}),
-    .d6({11'b0000_0000_000    , aluop}),
+    .d6({11'b0000_0000_0000   , aluop}),
     .d7(cycle_count),
     .y(dbg_data_tp));
 
