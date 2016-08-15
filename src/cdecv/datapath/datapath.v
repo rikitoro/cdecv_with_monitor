@@ -10,7 +10,7 @@ module datapath(
   // datapath <-> control unit
   input wire  [2:0] xsrc,     // read {7:FF, 6:FLG, 5:R, 4:RD, 3:C, 2:B, 1:A, 0:PC}
   input wire  [9:0] xdst,     // write enable {9:FLG, 8:R, 7:T, 6:I, 5:WD, 4:MA, 3:C, 2:B, 1:A, 0:PC} 
-  input wire  [4:0] aluop,    // select alu operation
+  input wire  [3:0] aluop,    // select alu operation
   output wire [7:0] I,
   output wire [2:0] SZCy,     // from FLG {S, Z, Cy}
   

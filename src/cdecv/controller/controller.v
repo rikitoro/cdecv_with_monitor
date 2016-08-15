@@ -9,7 +9,7 @@ module controller (
   input wire  [2:0] SZCy,
   output wire [2:0] xsrc,     // read {7:FF, 6:FLG, 5:R, 4:RD, 3:C, 2:B, 1:A, 0:PC}
   output wire [9:0] xdst,     // write enable {9:FLG, 8:R, 7:T, 6:I, 5:WD, 4:MA, 3:C, 2:B, 1:A, 0:PC} 
-  output wire [4:0] aluop,    // select alu operation
+  output wire [3:0] aluop,    // select alu operation
   // memory write enable
   output wire       we,
   // end sequence
