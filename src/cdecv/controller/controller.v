@@ -50,7 +50,7 @@ module controller (
         {`state_LD1,  8'b1000_00xx, 3'bxxx}:  state <= `state_LD2;
         {`state_LD2,  8'b1000_00xx, 3'bxxx}:  state <= `state_LD3;
         {`state_LD3,  8'b1000_00xx, 3'bxxx}:  state <= `state_LD4;
-        {`state_LD4,  8'b1000_00xx, 3'bxxx}:  state <= `state_F0;        
+        {`state_LD4,  8'b1000_00xx, 3'bxxx}:  state <= `state_F0;
         // ST sreg, adrs8
         {`state_F2,   8'b1010_xx00, 3'bxxx}:  state <= `state_ST0;
         {`state_ST0,  8'b1010_xx00, 3'bxxx}:  state <= `state_ST1;
@@ -58,11 +58,48 @@ module controller (
         {`state_ST2,  8'b1010_xx00, 3'bxxx}:  state <= `state_ST3;
         {`state_ST3,  8'b1010_xx00, 3'bxxx}:  state <= `state_ST4;
         {`state_ST4,  8'b1010_xx00, 3'bxxx}:  state <= `state_F0;
+        // ADD reg
+        {`state_F2,   8'b0010_00xx, 3'bxxx}:  state <= `state_ADD0; // T <- reg
+        {`state_ADD0, 8'b0010_00xx, 3'bxxx}:  state <= `state_ADD1; // R <- A + T
+        {`state_ADD1, 8'b0010_00xx, 3'bxxx}:  state <= `state_ADD2; // A <- R
+        {`state_ADD2, 8'b0010_00xx, 3'bxxx}:  state <= `state_F0;
+        // ADC reg
+        {`state_F2,   8'b0010_01xx, 3'bxxx}:  state <= `state_ADC0; // T <- reg
+        {`state_ADC0, 8'b0010_01xx, 3'bxxx}:  state <= `state_ADC1; // R <- A + T + Cy
+        {`state_ADC1, 8'b0010_01xx, 3'bxxx}:  state <= `state_ADC2; // A <- R
+        {`state_ADC2, 8'b0010_01xx, 3'bxxx}:  state <= `state_F0;
+        // SUB reg
+        {`state_F2,   8'b0010_10xx, 3'bxxx}:  state <= `state_SUB0; // T <- reg
+        {`state_SUB0, 8'b0010_10xx, 3'bxxx}:  state <= `state_SUB1; // R <- A - T
+        {`state_SUB1, 8'b0010_10xx, 3'bxxx}:  state <= `state_SUB2; // A <- R
+        {`state_SUB2, 8'b0010_10xx, 3'bxxx}:  state <= `state_F0;
+        // SBB reg
+        {`state_F2,   8'b0010_11xx, 3'bxxx}:  state <= `state_SBB0; // T <- reg
+        {`state_SBB0, 8'b0010_11xx, 3'bxxx}:  state <= `state_SBB1; // R <- A - T - Cy
+        {`state_SBB1, 8'b0010_11xx, 3'bxxx}:  state <= `state_SBB2; // A <- R
+        {`state_SBB2, 8'b0010_11xx, 3'bxxx}:  state <= `state_F0;
+        // AND reg
+        {`state_F2,   8'b0011_00xx, 3'bxxx}:  state <= `state_AND0; // T <- reg
+        {`state_AND0, 8'b0011_00xx, 3'bxxx}:  state <= `state_AND1; // R <- A & T
+        {`state_AND1, 8'b0011_00xx, 3'bxxx}:  state <= `state_AND2; // A <- R
+        {`state_AND2, 8'b0011_00xx, 3'bxxx}:  state <= `state_F0;
+        // OR reg
+        {`state_F2,   8'b0011_01xx, 3'bxxx}:  state <= `state_OR0; // T <- reg
+        {`state_OR0,  8'b0011_01xx, 3'bxxx}:  state <= `state_OR1; // R <- A | T
+        {`state_OR1,  8'b0011_01xx, 3'bxxx}:  state <= `state_OR2; // A <- R
+        {`state_OR2,  8'b0011_01xx, 3'bxxx}:  state <= `state_F0;
+        // EOR reg
+        {`state_F2,   8'b0011_11xx, 3'bxxx}:  state <= `state_EOR0; // T <- reg
+        {`state_EOR0, 8'b0011_11xx, 3'bxxx}:  state <= `state_EOR1; // R <- A ^ T
+        {`state_EOR1, 8'b0011_11xx, 3'bxxx}:  state <= `state_EOR2; // A <- R
+        {`state_EOR2, 8'b0011_11xx, 3'bxxx}:  state <= `state_F0;
+        
+        
         // HALT
         {`state_F2,   8'b1111_1111, 3'bxxx}:  state <= `state_HALT;
         {`state_HALT, 8'b1111_1111, 3'bxxx}:  state <= `state_HALT;
         //
-        default:                              state <= `state_R;
+        default:                              state <= `state_HALT;
       endcase
     end
   end
