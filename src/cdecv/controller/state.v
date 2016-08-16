@@ -46,3 +46,12 @@
 `define state_EOR0    12'b0011_1100_0000
 `define state_EOR1    12'b0011_1100_0001
 `define state_EOR2    12'b0011_1100_0010
+//
+`define state_INC0    12'b0100_0000_0000
+`define state_INC1    12'b0100_0000_0001
+//
+`define state_DEC0    12'b0100_0100_0000
+`define state_DEC1    12'b0100_0100_0001
+//
+`define state_NOT0    12'b0101_0000_0000
+`define state_NOT1    12'b0101_0000_0001

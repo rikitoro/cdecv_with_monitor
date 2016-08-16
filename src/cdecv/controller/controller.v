@@ -93,7 +93,18 @@ module controller (
         {`state_EOR0, 8'b0011_11xx, 3'bxxx}:  state <= `state_EOR1; // R <- A ^ T
         {`state_EOR1, 8'b0011_11xx, 3'bxxx}:  state <= `state_EOR2; // A <- R
         {`state_EOR2, 8'b0011_11xx, 3'bxxx}:  state <= `state_F0;
-        
+        // INC reg
+        {`state_F2,   8'b0100_00xx, 3'bxxx}:  state <= `state_INC0; // R <- reg + 1
+        {`state_INC0, 8'b0100_00xx, 3'bxxx}:  state <= `state_INC1; // reg <- R 
+        {`state_INC1, 8'b0100_00xx, 3'bxxx}:  state <= `state_F0;
+        // DEC reg
+        {`state_F2,   8'b0100_01xx, 3'bxxx}:  state <= `state_DEC0; // R <- reg - 1
+        {`state_DEC0, 8'b0100_01xx, 3'bxxx}:  state <= `state_DEC1; // reg <- R 
+        {`state_DEC1, 8'b0100_01xx, 3'bxxx}:  state <= `state_F0;
+        // NOT reg
+        {`state_F2,   8'b0101_00xx, 3'bxxx}:  state <= `state_NOT0; // R <- ~reg
+        {`state_NOT0, 8'b0101_00xx, 3'bxxx}:  state <= `state_NOT1; // reg <- R 
+        {`state_NOT1, 8'b0101_00xx, 3'bxxx}:  state <= `state_F0;
         
         // HALT
         {`state_F2,   8'b1111_1111, 3'bxxx}:  state <= `state_HALT;
