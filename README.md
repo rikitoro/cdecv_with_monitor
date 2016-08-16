@@ -1,7 +1,11 @@
 # CDEC v (variant or voyager)
-- Yet Another CDEC(Computer Design Education Computer) by Dr. S. Kimura and Dr. A. Kanomata
+- Yet Another CDEC (Computer Design Education Computer originally developed by Dr. S. Kimura and Dr. A. Kanomata)
+- 8-bit architecture CPU
+- Very simple but good capable instruction set architecture
+- Also very simple micro-architecture
+- Good for introducing computer architecture education 
 
-# Architecture
+# Instruction Set Architecture of CDEC v
 CDEC v is defined to be a 8-bit CPU architecture consisting of following register set, memory, and instructions.
 
 ## register set 
