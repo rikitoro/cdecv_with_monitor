@@ -105,7 +105,27 @@ module controller (
         {`state_F2,   8'b0101_00xx, 3'bxxx}:  state <= `state_NOT0; // R <- ~reg
         {`state_NOT0, 8'b0101_00xx, 3'bxxx}:  state <= `state_NOT1; // reg <- R 
         {`state_NOT1, 8'b0101_00xx, 3'bxxx}:  state <= `state_F0;
-        
+        // JMP adrs8
+        {`state_F2,   8'b1100_0000, 3'bxxx}:  state <= `state_JMP0; // MA <- PC
+        {`state_JMP0, 8'b1100_0000, 3'bxxx}:  state <= `state_JMP1; // (RD <- RAM)
+        {`state_JMP1, 8'b1100_0000, 3'bxxx}:  state <= `state_JMP2; // PC <- RD
+        {`state_JMP2, 8'b1100_0000, 3'bxxx}:  state <= `state_F0;
+        // JS adrs8
+        {`state_F2,   8'b1111_0000, 3'bxxx}:  state <= `state_JS0;  // MA <- PC, R <- PC + 1
+        {`state_JS0,  8'b1111_0000, 3'bxxx}:  state <= `state_JS1;  // (RD <- RAM)
+        {`state_JS1,  8'b1111_0000, 3'bxxx}:  state <= `state_JS2;  // PC <- (S == 1) ? RD : R
+        {`state_JS2,  8'b1111_0000, 3'bxxx}:  state <= `state_F0;
+        // JZ adrs8
+        {`state_F2,   8'b1110_1000, 3'bxxx}:  state <= `state_JZ0;  // MA <- PC, R <- PC + 1
+        {`state_JZ0,  8'b1110_1000, 3'bxxx}:  state <= `state_JZ1;  // (RD <- RAM)
+        {`state_JZ1,  8'b1110_1000, 3'bxxx}:  state <= `state_JZ2;  // PC <- (Z == 1) ? RD : R
+        {`state_JZ2,  8'b1110_1000, 3'bxxx}:  state <= `state_F0;
+        // JC adrs8
+        {`state_F2,   8'b1110_0100, 3'bxxx}:  state <= `state_JC0;  // MA <- PC, R <- PC + 1
+        {`state_JC0,  8'b1110_0100, 3'bxxx}:  state <= `state_JC1;  // (RD <- RAM)
+        {`state_JC1,  8'b1110_0100, 3'bxxx}:  state <= `state_JC2;  // PC <- (Cy == 1) ? RD : R
+        {`state_JC2,  8'b1110_0100, 3'bxxx}:  state <= `state_F0;
+
         // HALT
         {`state_F2,   8'b1111_1111, 3'bxxx}:  state <= `state_HALT;
         {`state_HALT, 8'b1111_1111, 3'bxxx}:  state <= `state_HALT;
