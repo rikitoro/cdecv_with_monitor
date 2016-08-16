@@ -2,11 +2,11 @@
 - Yet Another CDEC(Computer Design Education Computer) by Dr. S. Kimura and Dr. A. Kanomata
 
 # Architecture
-CDEC v is defined to be a 8-bit CPU architecture consisting of following register set and instructions.
+CDEC v is defined to be a 8-bit CPU architecture consisting of following register set, memory, and instructions.
 
 ## register set 
 
-| register |                        |
+| register | purpose                |
 |----------|------------------------|
 | PC       | program counter        |
 | A        |general purpose register|
@@ -15,6 +15,18 @@ CDEC v is defined to be a 8-bit CPU architecture consisting of following registe
 | FLG      |flag register           |
 
 FLG = {4'b0000, S, Z, Cy, 1'b0}, where S, Z, and Cy are sign, zero, and carry flag, respectively. 
+
+## memory
+
+CDEC v has 256 byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-bit I/O port.
+
+| address     | memory               |
+|-------------|----------------------|
+| $0x00-$0xFE | RAM (1 word = 8 bit) |
+| $0xFF       | I/O port (8 bit)     |
+
+
+
 
 ## instructions
 
@@ -28,7 +40,7 @@ FLG = {4'b0000, S, Z, Cy, 1'b0}, where S, Z, and Cy are sign, zero, and carry fl
 | SUB reg        | 001010rr -------- |  @   | A <- A - reg           |
 | SBB reg        | 001011rr -------- |  @   | A <- A - reg - Cy      |
 | AND reg        | 001100rr -------- |  @   | A <- A & reg           |
-| OR reg         | 001101rr -------- |  @   | A <- A | reg           |
+| OR reg         | 001101rr -------- |  @   | A <- A \| reg          |
 | EOR reg        | 001111rr -------- |  @   | A <- A ^ reg           |
 | INC reg        | 010000rr -------- |  @   | reg <- reg + 1         |
 | DEC reg        | 010001rr -------- |  @   | reg <- reg - 1         |
