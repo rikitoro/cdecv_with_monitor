@@ -55,3 +55,20 @@
 //
 `define state_NOT0    12'b0101_0000_0000
 `define state_NOT1    12'b0101_0000_0001
+//
+`define state_JMP0    12'b1100_0000_0000
+`define state_JMP1    12'b1100_0000_0001
+`define state_JMP2    12'b1100_0000_0010
+//
+`define state_JS0     12'b1111_0000_0000
+`define state_JS1     12'b1111_0000_0001
+`define state_JS2     12'b1111_0000_0010
+//
+`define state_JZ0     12'b1110_1000_0000
+`define state_JZ1     12'b1110_1000_0001
+`define state_JZ2     12'b1110_1000_0010
+//
+`define state_JC0     12'b1110_0100_0000
+`define state_JC1     12'b1110_0100_0001
+`define state_JC2     12'b1110_0100_0010
+

@@ -164,6 +164,29 @@ module instruction_decoder(
       {`state_NOT1, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcR , `xdstB          , `aluopZERO, 3'b010}; // NOT B
       {`state_NOT1, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcR , `xdstC          , `aluopZERO, 3'b010}; // NOT C
       //
+      // JMP adrs8
+      {`state_JMP0, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA         , `aluopZERO, 3'b000};
+      {`state_JMP1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b000};
+      {`state_JMP2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcRD, `xdstPC         , `aluopZERO, 3'b010};
+      //
+      // JS adrs8
+      {`state_JS0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA|`xdstR  , `aluopINC,  3'b000};
+      {`state_JS1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b000};
+      {`state_JS2,  8'bxxxx_xxxx, 3'b0xx}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b010}; // S = 0
+      {`state_JS2,  8'bxxxx_xxxx, 3'b1xx}:  control = {`xsrcRD, `xdstPC         , `aluopZERO, 3'b010}; // S = 1
+      //
+      // JZ adrs8
+      {`state_JZ0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA|`xdstR  , `aluopINC,  3'b000};
+      {`state_JZ1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b000};
+      {`state_JZ2,  8'bxxxx_xxxx, 3'bx0x}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b010}; // Z = 0
+      {`state_JZ2,  8'bxxxx_xxxx, 3'bx1x}:  control = {`xsrcRD, `xdstPC         , `aluopZERO, 3'b010}; // Z = 1
+      //
+      // JZ adrs8
+      {`state_JC0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA|`xdstR  , `aluopINC,  3'b000};
+      {`state_JC1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b000};
+      {`state_JC2,  8'bxxxx_xxxx, 3'bxx0}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b010}; // Cy = 0
+      {`state_JC2,  8'bxxxx_xxxx, 3'bxx1}:  control = {`xsrcRD, `xdstPC         , `aluopZERO, 3'b010}; // Cy = 1
+
       // HALT
       {`state_HALT, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b011}; 
       //
