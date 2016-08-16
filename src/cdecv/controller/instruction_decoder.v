@@ -58,7 +58,7 @@ module instruction_decoder(
       // reset
       {`state_R,    8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b001};
       // fetch
-      {`state_F0,   8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, (`xdstMA|`xdstR), `aluopINC , 3'b000};
+      {`state_F0,   8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA|`xdstR  , `aluopINC , 3'b000};
       {`state_F1,   8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b000};
       {`state_F2,   8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcRD, `xdstI          , `aluopZERO, 3'b000};
       //
@@ -74,7 +74,7 @@ module instruction_decoder(
       {`state_MOV0, 8'bxxxx_1111, 3'bxxx}:  control = {`xsrcC , `xdstC          , `aluopZERO, 3'b010};  // MOV C, C
       //
       // LD adrs8, dreg
-      {`state_LD0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, (`xdstMA|`xdstR), `aluopINC , 3'b000};
+      {`state_LD0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA|`xdstR  , `aluopINC , 3'b000};
       {`state_LD1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b000};
       {`state_LD2,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcRD, `xdstMA         , `aluopZERO, 3'b000};
       {`state_LD3,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcRD, `xdstNON        , `aluopZERO, 3'b000};
@@ -83,7 +83,7 @@ module instruction_decoder(
       {`state_LD4,  8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcRD, `xdstC          , `aluopZERO, 3'b010}; // LD adrs8, C
       //
       // ST sreg, adrs8
-      {`state_ST0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, (`xdstMA|`xdstR), `aluopINC , 3'b000};
+      {`state_ST0,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcPC, `xdstMA|`xdstR  , `aluopINC , 3'b000};
       {`state_ST1,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstPC         , `aluopZERO, 3'b000};
       {`state_ST2,  8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcRD, `xdstMA         , `aluopZERO, 3'b000};
       {`state_ST3,  8'bxxxx_01xx, 3'bxxx}:  control = {`xsrcA , `xdstWD         , `aluopZERO, 3'b000}; // ST A, adrs8
@@ -139,7 +139,31 @@ module instruction_decoder(
       {`state_EOR0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstT          , `aluopZERO, 3'b000}; // EOR C
       {`state_EOR1, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopEOR , 3'b000};
       {`state_EOR2, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010};
-      
+      //
+      // INC reg
+      {`state_INC0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopINC , 3'b000}; // INC A
+      {`state_INC0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstR|`xdstFLG , `aluopINC , 3'b000}; // INC B
+      {`state_INC0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstR|`xdstFLG , `aluopINC , 3'b000}; // INC C
+      {`state_INC1, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010}; // INC A
+      {`state_INC1, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcR , `xdstB          , `aluopZERO, 3'b010}; // INC A
+      {`state_INC1, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcR , `xdstC          , `aluopZERO, 3'b010}; // INC A
+      //
+      // DEC reg
+      {`state_DEC0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopDEC , 3'b000}; // DEC A
+      {`state_DEC0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstR|`xdstFLG , `aluopDEC , 3'b000}; // DEC B
+      {`state_DEC0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstR|`xdstFLG , `aluopDEC , 3'b000}; // DEC C
+      {`state_DEC1, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010}; // DEC A
+      {`state_DEC1, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcR , `xdstB          , `aluopZERO, 3'b010}; // DEC A
+      {`state_DEC1, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcR , `xdstC          , `aluopZERO, 3'b010}; // DEC A
+      //
+      // NOT reg
+      {`state_NOT0, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcA , `xdstR|`xdstFLG , `aluopNOT , 3'b000}; // NOT A
+      {`state_NOT0, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcB , `xdstR|`xdstFLG , `aluopNOT , 3'b000}; // NOT B
+      {`state_NOT0, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcC , `xdstR|`xdstFLG , `aluopNOT , 3'b000}; // NOT C
+      {`state_NOT1, 8'bxxxx_xx01, 3'bxxx}:  control = {`xsrcR , `xdstA          , `aluopZERO, 3'b010}; // NOT A
+      {`state_NOT1, 8'bxxxx_xx10, 3'bxxx}:  control = {`xsrcR , `xdstB          , `aluopZERO, 3'b010}; // NOT B
+      {`state_NOT1, 8'bxxxx_xx11, 3'bxxx}:  control = {`xsrcR , `xdstC          , `aluopZERO, 3'b010}; // NOT C
+      //
       // HALT
       {`state_HALT, 8'bxxxx_xxxx, 3'bxxx}:  control = {`xsrcFF, `xdstNON        , `aluopZERO, 3'b011}; 
       //
