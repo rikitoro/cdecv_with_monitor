@@ -1,5 +1,5 @@
 Flow report for top
-Wed Aug 17 09:47:08 2016
+Wed Aug 17 12:07:08 2016
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Wed Aug 17 09:47:08 2016       ;
+; Flow Status                     ; Successful - Wed Aug 17 12:07:08 2016       ;
 ; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Lite Edition ;
 ; Revision Name                   ; top                                         ;
 ; Top-level Entity Name           ; top                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CEBA4F23C7                                 ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 1,198 / 18,480 ( 6 % )                      ;
-; Total registers                 ; 1300                                        ;
+; Logic utilization (in ALMs)     ; 1,192 / 18,480 ( 6 % )                      ;
+; Total registers                 ; 1311                                        ;
 ; Total pins                      ; 59 / 224 ( 26 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 275,456 / 3,153,920 ( 9 % )                 ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/17/2016 09:41:30 ;
+; Start date & time ; 08/17/2016 12:02:24 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top                 ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 216075648901433.147139449006728       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 216075648901433.147140294303756       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --             ;
@@ -87,6 +87,10 @@ agreement for further details.
 ; MISC_FILE                           ; src/cdecv/memory/dualport_ram.bsf     ; --            ; --          ; --             ;
 ; MISC_FILE                           ; src/cdecv/memory/dualport_ram_inst.v  ; --            ; --          ; --             ;
 ; MISC_FILE                           ; src/cdecv/memory/dualport_ram_bb.v    ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                     ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS      ; Half Signal Swing                     ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                            ; --            ; --          ; --             ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS     ; Half Vccio                            ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top            ;
@@ -102,12 +106,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:56     ; 1.0                     ; 1011 MB             ; 00:03:34                           ;
-; Fitter                    ; 00:02:31     ; 1.1                     ; 1958 MB             ; 00:03:47                           ;
-; Assembler                 ; 00:00:14     ; 1.0                     ; 885 MB              ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:19     ; 1.4                     ; 1153 MB             ; 00:00:24                           ;
-; EDA Netlist Writer        ; 00:00:07     ; 1.0                     ; 824 MB              ; 00:00:07                           ;
-; Total                     ; 00:05:07     ; --                      ; --                  ; 00:08:04                           ;
+; Analysis & Synthesis      ; 00:01:48     ; 1.0                     ; 1010 MB             ; 00:03:36                           ;
+; Fitter                    ; 00:01:54     ; 1.1                     ; 1985 MB             ; 00:03:17                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 880 MB              ; 00:00:09                           ;
+; TimeQuest Timing Analyzer ; 00:00:19     ; 1.4                     ; 1153 MB             ; 00:00:25                           ;
+; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 822 MB              ; 00:00:05                           ;
+; Total                     ; 00:04:15     ; --                      ; --                  ; 00:07:32                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
