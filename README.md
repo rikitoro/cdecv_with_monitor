@@ -18,18 +18,19 @@ CDEC v is defined to be a 8-bit CPU architecture consisting of following registe
 | C        |general purpose register|
 | FLG      |flag register           |
 
-FLG = {4'bxxxx, S, Z, Cy, 1'bx}, where S, Z, and Cy are sign, zero, and carry flag, respectively. 
+FLG = {4'bxxxx, S, Z, Cy, 1'bx}, where S, Z, and Cy are sign, zero, and carry flag bit, respectively. 
 
 ## memory
 
 CDEC v has 256 byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-bit I/O port.
 
-| address     | memory               |
-|-------------|----------------------|
-|`$0x00-$0xFE`| RAM (1 word = 8 bit) |
-|`$0xFF      `| I/O port (8 bit)     |
+| address     | memory            |
+|-------------|-------------------|
+|`$0x00-$0xFE`| RAM (255 words)   |
+|`$0xFF      `| I/O port (8 bit)  |
+1 word = 1 byte = 8 bit
 
-## instructions
+## statndard instructions
 
 | mnemonic       | machime code  | flag | behavioral description |
 |----------------|---------------|:----:|------------------------|
@@ -53,6 +54,9 @@ CDEC v has 256 byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-bit
 
 Let x in machine code be 0 for future extensions.
 
+@ means that the flag bits(S, Z, Xy) may be changed
+depending on the result of the operation.
+
 ss, dd, and rr in machine code are defined as follows.
 
 | reg/sreg/dreg | rr/ss/dd |
@@ -63,12 +67,12 @@ ss, dd, and rr in machine code are defined as follows.
 
 ## sample program
 
-Following program counts the number of bit '1' of
-the 8-bit data stored in the memory address 0xFF (Iport),
-and output the result at the memory address 0x1F and 0xFF (Oport).
+Following program counts the number of bit '1' in
+the 8-bit data stored at the memory address 0xFF (I port),
+and outputs the result at the memory address 0x1F and 0xFF (O port).
 ``` [bitcount.asm]
         ORG   0x00          ; adrs     code
-        LD    ZERO, B       ;  00     82  13
+        LD    ZERO, B       ;  00     82  14
         LD    0xFF, A       ;  02     81  FF
 LOOP:   ADD   A             ;  04     21
         JC    COUNT         ;  05     E4  0B
@@ -87,6 +91,6 @@ ZERO:   DB    0x00          ;  14     04
 RSLT:   DB    0x00          ;  1F     00
 
 ; HEX format (ignore under scores '_')
-; :10_0000_00_821381FF21E40BE80EC00442C004A8FF_64
+; :10_0000_00_821481FF21E40BE80EC00442C004A8FF_63
 ; :10_0010_00_A814FF00000000000000000000000000_25
 ```
