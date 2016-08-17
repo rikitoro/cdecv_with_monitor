@@ -99,7 +99,7 @@
     </sld_info>
     <sld_info hpath="monitor:monitor" name="monitor">
       <assignment_values>
-        <assignment_value text="QSYS_NAME monitor HAS_SOPCINFO 1 GENERATION_ID 1471325430"/>
+        <assignment_value text="QSYS_NAME monitor HAS_SOPCINFO 1 GENERATION_ID 1471394520"/>
       </assignment_values>
       <parameters/>
     </sld_info>

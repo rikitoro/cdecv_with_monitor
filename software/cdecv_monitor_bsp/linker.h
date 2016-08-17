@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'monitor'
  * SOPC Builder design path: ../../monitor.sopcinfo
  *
- * Generated: Fri Aug 12 20:29:38 JST 2016
+ * Generated: Wed Aug 17 09:33:58 JST 2016
  */
 
 /*
@@ -89,13 +89,5 @@
  */
 
 #define ALT_ALLOW_CODE_AT_RESET
-
-
-/*
- * The alt_load() facility is called from crt0 to copy sections into RAM.
- *
- */
-
-#define ALT_LOAD_COPY_RWDATA
 
 #endif /* __LINKER_H_ */
