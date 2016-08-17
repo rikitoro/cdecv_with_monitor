@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>2016/08/16 14:52:08</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1471326728381</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Aug 17, 2016 9:33:57 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1471394037434</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\yoshiaki\devel\quartus_workspace\cdecv_with_monitor\software\cdecv_monitor_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\monitor.sopcinfo</SopcDesignFile>
@@ -74,7 +74,7 @@
                 <SettingName>hal.linker.enable_alt_load</SettingName>
                 <Identifier>none</Identifier>
                 <Type>Boolean</Type>
-                <Value>1</Value>
+                <Value>0</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Enables the alt_load() facility. The alt_load() facility copies sections from the .text memory into RAM. If true, this setting sets up the VMA/LMA of sections in linker.x to allow them to be loaded into the .text memory.</Description>
@@ -98,7 +98,7 @@
                 <SettingName>hal.linker.enable_alt_load_copy_rwdata</SettingName>
                 <Identifier>none</Identifier>
                 <Type>Boolean</Type>
-                <Value>1</Value>
+                <Value>0</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Causes the alt_load() facility to copy the .rwdata section. If true, this setting defines the macro ALT_LOAD_COPY_RWDATA in linker.h.</Description>
