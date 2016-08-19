@@ -4,17 +4,21 @@
 
 `timescale 1 ps / 1 ps
 module monitor (
-		input  wire       clk_clk,          //       clk.clk
-		output wire       clock_1_export,   //   clock_1.export
-		output wire       prg_clock_export, // prg_clock.export
-		output wire [7:0] prg_ma_export,    //    prg_ma.export
-		input  wire [7:0] prg_rd_export,    //    prg_rd.export
-		output wire [7:0] prg_wd_export,    //    prg_wd.export
-		output wire       prg_we_export,    //    prg_we.export
-		input  wire       reset_reset_n,    //     reset.reset_n
-		output wire       reset_1_export,   //   reset_1.export
-		input  wire       uart_rxd,         //      uart.rxd
-		output wire       uart_txd          //          .txd
+		input  wire        clk_clk,               //            clk.clk
+		output wire        clock_to_cdecv_export, // clock_to_cdecv.export
+		output wire [3:0]  dbg_addr_export,       //       dbg_addr.export
+		input  wire        dbg_clock_export,      //      dbg_clock.export
+		input  wire [15:0] dbg_data_export,       //       dbg_data.export
+		input  wire        dbg_we_export,         //         dbg_we.export
+		output wire        prg_clock_export,      //      prg_clock.export
+		output wire [7:0]  prg_ma_export,         //         prg_ma.export
+		input  wire [7:0]  prg_rd_export,         //         prg_rd.export
+		output wire [7:0]  prg_wd_export,         //         prg_wd.export
+		output wire        prg_we_export,         //         prg_we.export
+		input  wire        reset_reset_n,         //          reset.reset_n
+		output wire        reset_to_cdecv_export, // reset_to_cdecv.export
+		input  wire        uart_rxd,              //           uart.rxd
+		output wire        uart_txd               //               .txd
 	);
 
 	wire  [31:0] nios2_processor_data_master_readdata;                          // mm_interconnect_0:nios2_processor_data_master_readdata -> nios2_processor:d_readdata
@@ -48,7 +52,7 @@ module monitor (
 	wire  [31:0] mm_interconnect_0_nios2_processor_debug_mem_slave_writedata;   // mm_interconnect_0:nios2_processor_debug_mem_slave_writedata -> nios2_processor:debug_mem_slave_writedata
 	wire         mm_interconnect_0_onchip_memory_s1_chipselect;                 // mm_interconnect_0:onchip_memory_s1_chipselect -> onchip_memory:chipselect
 	wire  [31:0] mm_interconnect_0_onchip_memory_s1_readdata;                   // onchip_memory:readdata -> mm_interconnect_0:onchip_memory_s1_readdata
-	wire  [12:0] mm_interconnect_0_onchip_memory_s1_address;                    // mm_interconnect_0:onchip_memory_s1_address -> onchip_memory:address
+	wire  [10:0] mm_interconnect_0_onchip_memory_s1_address;                    // mm_interconnect_0:onchip_memory_s1_address -> onchip_memory:address
 	wire   [3:0] mm_interconnect_0_onchip_memory_s1_byteenable;                 // mm_interconnect_0:onchip_memory_s1_byteenable -> onchip_memory:byteenable
 	wire         mm_interconnect_0_onchip_memory_s1_write;                      // mm_interconnect_0:onchip_memory_s1_write -> onchip_memory:write
 	wire  [31:0] mm_interconnect_0_onchip_memory_s1_writedata;                  // mm_interconnect_0:onchip_memory_s1_writedata -> onchip_memory:writedata
@@ -75,11 +79,11 @@ module monitor (
 	wire   [1:0] mm_interconnect_0_prg_we_s1_address;                           // mm_interconnect_0:prg_we_s1_address -> prg_we:address
 	wire         mm_interconnect_0_prg_we_s1_write;                             // mm_interconnect_0:prg_we_s1_write -> prg_we:write_n
 	wire  [31:0] mm_interconnect_0_prg_we_s1_writedata;                         // mm_interconnect_0:prg_we_s1_writedata -> prg_we:writedata
-	wire         mm_interconnect_0_reset_s1_chipselect;                         // mm_interconnect_0:reset_s1_chipselect -> reset:chipselect
-	wire  [31:0] mm_interconnect_0_reset_s1_readdata;                           // reset:readdata -> mm_interconnect_0:reset_s1_readdata
-	wire   [1:0] mm_interconnect_0_reset_s1_address;                            // mm_interconnect_0:reset_s1_address -> reset:address
-	wire         mm_interconnect_0_reset_s1_write;                              // mm_interconnect_0:reset_s1_write -> reset:write_n
-	wire  [31:0] mm_interconnect_0_reset_s1_writedata;                          // mm_interconnect_0:reset_s1_writedata -> reset:writedata
+	wire         mm_interconnect_0_reset_to_cdecv_s1_chipselect;                // mm_interconnect_0:reset_to_cdecv_s1_chipselect -> reset_to_cdecv:chipselect
+	wire  [31:0] mm_interconnect_0_reset_to_cdecv_s1_readdata;                  // reset_to_cdecv:readdata -> mm_interconnect_0:reset_to_cdecv_s1_readdata
+	wire   [1:0] mm_interconnect_0_reset_to_cdecv_s1_address;                   // mm_interconnect_0:reset_to_cdecv_s1_address -> reset_to_cdecv:address
+	wire         mm_interconnect_0_reset_to_cdecv_s1_write;                     // mm_interconnect_0:reset_to_cdecv_s1_write -> reset_to_cdecv:write_n
+	wire  [31:0] mm_interconnect_0_reset_to_cdecv_s1_writedata;                 // mm_interconnect_0:reset_to_cdecv_s1_writedata -> reset_to_cdecv:writedata
 	wire         mm_interconnect_0_uart_s1_chipselect;                          // mm_interconnect_0:uart_s1_chipselect -> uart:chipselect
 	wire  [15:0] mm_interconnect_0_uart_s1_readdata;                            // uart:readdata -> mm_interconnect_0:uart_s1_readdata
 	wire   [2:0] mm_interconnect_0_uart_s1_address;                             // mm_interconnect_0:uart_s1_address -> uart:address
@@ -87,26 +91,72 @@ module monitor (
 	wire         mm_interconnect_0_uart_s1_begintransfer;                       // mm_interconnect_0:uart_s1_begintransfer -> uart:begintransfer
 	wire         mm_interconnect_0_uart_s1_write;                               // mm_interconnect_0:uart_s1_write -> uart:write_n
 	wire  [15:0] mm_interconnect_0_uart_s1_writedata;                           // mm_interconnect_0:uart_s1_writedata -> uart:writedata
-	wire         mm_interconnect_0_clock_s1_chipselect;                         // mm_interconnect_0:clock_s1_chipselect -> clock:chipselect
-	wire  [31:0] mm_interconnect_0_clock_s1_readdata;                           // clock:readdata -> mm_interconnect_0:clock_s1_readdata
-	wire   [1:0] mm_interconnect_0_clock_s1_address;                            // mm_interconnect_0:clock_s1_address -> clock:address
-	wire         mm_interconnect_0_clock_s1_write;                              // mm_interconnect_0:clock_s1_write -> clock:write_n
-	wire  [31:0] mm_interconnect_0_clock_s1_writedata;                          // mm_interconnect_0:clock_s1_writedata -> clock:writedata
+	wire         mm_interconnect_0_clock_to_cdecv_s1_chipselect;                // mm_interconnect_0:clock_to_cdecv_s1_chipselect -> clock_to_cdecv:chipselect
+	wire  [31:0] mm_interconnect_0_clock_to_cdecv_s1_readdata;                  // clock_to_cdecv:readdata -> mm_interconnect_0:clock_to_cdecv_s1_readdata
+	wire   [1:0] mm_interconnect_0_clock_to_cdecv_s1_address;                   // mm_interconnect_0:clock_to_cdecv_s1_address -> clock_to_cdecv:address
+	wire         mm_interconnect_0_clock_to_cdecv_s1_write;                     // mm_interconnect_0:clock_to_cdecv_s1_write -> clock_to_cdecv:write_n
+	wire  [31:0] mm_interconnect_0_clock_to_cdecv_s1_writedata;                 // mm_interconnect_0:clock_to_cdecv_s1_writedata -> clock_to_cdecv:writedata
+	wire         mm_interconnect_0_dbg_addr_s1_chipselect;                      // mm_interconnect_0:dbg_addr_s1_chipselect -> dbg_addr:chipselect
+	wire  [31:0] mm_interconnect_0_dbg_addr_s1_readdata;                        // dbg_addr:readdata -> mm_interconnect_0:dbg_addr_s1_readdata
+	wire   [1:0] mm_interconnect_0_dbg_addr_s1_address;                         // mm_interconnect_0:dbg_addr_s1_address -> dbg_addr:address
+	wire         mm_interconnect_0_dbg_addr_s1_write;                           // mm_interconnect_0:dbg_addr_s1_write -> dbg_addr:write_n
+	wire  [31:0] mm_interconnect_0_dbg_addr_s1_writedata;                       // mm_interconnect_0:dbg_addr_s1_writedata -> dbg_addr:writedata
+	wire  [31:0] mm_interconnect_0_dbg_data_s1_readdata;                        // dbg_data:readdata -> mm_interconnect_0:dbg_data_s1_readdata
+	wire   [1:0] mm_interconnect_0_dbg_data_s1_address;                         // mm_interconnect_0:dbg_data_s1_address -> dbg_data:address
+	wire  [31:0] mm_interconnect_0_dbg_clock_s1_readdata;                       // dbg_clock:readdata -> mm_interconnect_0:dbg_clock_s1_readdata
+	wire   [1:0] mm_interconnect_0_dbg_clock_s1_address;                        // mm_interconnect_0:dbg_clock_s1_address -> dbg_clock:address
+	wire  [31:0] mm_interconnect_0_dbg_we_s1_readdata;                          // dbg_we:readdata -> mm_interconnect_0:dbg_we_s1_readdata
+	wire   [1:0] mm_interconnect_0_dbg_we_s1_address;                           // mm_interconnect_0:dbg_we_s1_address -> dbg_we:address
 	wire         irq_mapper_receiver0_irq;                                      // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                      // uart:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] nios2_processor_irq_irq;                                       // irq_mapper:sender_irq -> nios2_processor:irq
-	wire         rst_controller_reset_out_reset;                                // rst_controller:reset_out -> [clock:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:nios2_processor_reset_reset_bridge_in_reset_reset, nios2_processor:reset_n, onchip_memory:reset, prg_MA:reset_n, prg_RD:reset_n, prg_WD:reset_n, prg_clock:reset_n, prg_we:reset_n, reset:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart:reset_n]
+	wire         rst_controller_reset_out_reset;                                // rst_controller:reset_out -> [clock_to_cdecv:reset_n, dbg_addr:reset_n, dbg_clock:reset_n, dbg_data:reset_n, dbg_we:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:nios2_processor_reset_reset_bridge_in_reset_reset, nios2_processor:reset_n, onchip_memory:reset, prg_MA:reset_n, prg_RD:reset_n, prg_WD:reset_n, prg_clock:reset_n, prg_we:reset_n, reset_to_cdecv:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart:reset_n]
 	wire         rst_controller_reset_out_reset_req;                            // rst_controller:reset_req -> [nios2_processor:reset_req, onchip_memory:reset_req, rst_translator:reset_req_in]
 
-	monitor_clock clock (
-		.clk        (clk_clk),                               //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
-		.address    (mm_interconnect_0_clock_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_clock_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_clock_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_clock_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_clock_s1_readdata),   //                    .readdata
-		.out_port   (clock_1_export)                         // external_connection.export
+	monitor_clock_to_cdecv clock_to_cdecv (
+		.clk        (clk_clk),                                        //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_clock_to_cdecv_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_clock_to_cdecv_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_clock_to_cdecv_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_clock_to_cdecv_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_clock_to_cdecv_s1_readdata),   //                    .readdata
+		.out_port   (clock_to_cdecv_export)                           // external_connection.export
+	);
+
+	monitor_dbg_addr dbg_addr (
+		.clk        (clk_clk),                                  //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address    (mm_interconnect_0_dbg_addr_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_dbg_addr_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_dbg_addr_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_dbg_addr_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_dbg_addr_s1_readdata),   //                    .readdata
+		.out_port   (dbg_addr_export)                           // external_connection.export
+	);
+
+	monitor_dbg_clock dbg_clock (
+		.clk      (clk_clk),                                 //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address  (mm_interconnect_0_dbg_clock_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_dbg_clock_s1_readdata), //                    .readdata
+		.in_port  (dbg_clock_export)                         // external_connection.export
+	);
+
+	monitor_dbg_data dbg_data (
+		.clk      (clk_clk),                                //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),        //               reset.reset_n
+		.address  (mm_interconnect_0_dbg_data_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_dbg_data_s1_readdata), //                    .readdata
+		.in_port  (dbg_data_export)                         // external_connection.export
+	);
+
+	monitor_dbg_clock dbg_we (
+		.clk      (clk_clk),                              //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
+		.address  (mm_interconnect_0_dbg_we_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_dbg_we_s1_readdata), //                    .readdata
+		.in_port  (dbg_we_export)                         // external_connection.export
 	);
 
 	monitor_jtag_uart_0 jtag_uart_0 (
@@ -194,7 +244,7 @@ module monitor (
 		.out_port   (prg_wd_export)                           // external_connection.export
 	);
 
-	monitor_clock prg_clock (
+	monitor_clock_to_cdecv prg_clock (
 		.clk        (clk_clk),                                   //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address    (mm_interconnect_0_prg_clock_s1_address),    //                  s1.address
@@ -205,7 +255,7 @@ module monitor (
 		.out_port   (prg_clock_export)                           // external_connection.export
 	);
 
-	monitor_clock prg_we (
+	monitor_clock_to_cdecv prg_we (
 		.clk        (clk_clk),                                //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),        //               reset.reset_n
 		.address    (mm_interconnect_0_prg_we_s1_address),    //                  s1.address
@@ -216,15 +266,15 @@ module monitor (
 		.out_port   (prg_we_export)                           // external_connection.export
 	);
 
-	monitor_clock reset (
-		.clk        (clk_clk),                               //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),       //               reset.reset_n
-		.address    (mm_interconnect_0_reset_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_reset_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_reset_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_reset_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_reset_s1_readdata),   //                    .readdata
-		.out_port   (reset_1_export)                         // external_connection.export
+	monitor_clock_to_cdecv reset_to_cdecv (
+		.clk        (clk_clk),                                        //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address    (mm_interconnect_0_reset_to_cdecv_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_reset_to_cdecv_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_reset_to_cdecv_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_reset_to_cdecv_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_reset_to_cdecv_s1_readdata),   //                    .readdata
+		.out_port   (reset_to_cdecv_export)                           // external_connection.export
 	);
 
 	monitor_sysid_qsys_0 sysid_qsys_0 (
@@ -266,11 +316,22 @@ module monitor (
 		.nios2_processor_instruction_master_waitrequest    (nios2_processor_instruction_master_waitrequest),                //                                            .waitrequest
 		.nios2_processor_instruction_master_read           (nios2_processor_instruction_master_read),                       //                                            .read
 		.nios2_processor_instruction_master_readdata       (nios2_processor_instruction_master_readdata),                   //                                            .readdata
-		.clock_s1_address                                  (mm_interconnect_0_clock_s1_address),                            //                                    clock_s1.address
-		.clock_s1_write                                    (mm_interconnect_0_clock_s1_write),                              //                                            .write
-		.clock_s1_readdata                                 (mm_interconnect_0_clock_s1_readdata),                           //                                            .readdata
-		.clock_s1_writedata                                (mm_interconnect_0_clock_s1_writedata),                          //                                            .writedata
-		.clock_s1_chipselect                               (mm_interconnect_0_clock_s1_chipselect),                         //                                            .chipselect
+		.clock_to_cdecv_s1_address                         (mm_interconnect_0_clock_to_cdecv_s1_address),                   //                           clock_to_cdecv_s1.address
+		.clock_to_cdecv_s1_write                           (mm_interconnect_0_clock_to_cdecv_s1_write),                     //                                            .write
+		.clock_to_cdecv_s1_readdata                        (mm_interconnect_0_clock_to_cdecv_s1_readdata),                  //                                            .readdata
+		.clock_to_cdecv_s1_writedata                       (mm_interconnect_0_clock_to_cdecv_s1_writedata),                 //                                            .writedata
+		.clock_to_cdecv_s1_chipselect                      (mm_interconnect_0_clock_to_cdecv_s1_chipselect),                //                                            .chipselect
+		.dbg_addr_s1_address                               (mm_interconnect_0_dbg_addr_s1_address),                         //                                 dbg_addr_s1.address
+		.dbg_addr_s1_write                                 (mm_interconnect_0_dbg_addr_s1_write),                           //                                            .write
+		.dbg_addr_s1_readdata                              (mm_interconnect_0_dbg_addr_s1_readdata),                        //                                            .readdata
+		.dbg_addr_s1_writedata                             (mm_interconnect_0_dbg_addr_s1_writedata),                       //                                            .writedata
+		.dbg_addr_s1_chipselect                            (mm_interconnect_0_dbg_addr_s1_chipselect),                      //                                            .chipselect
+		.dbg_clock_s1_address                              (mm_interconnect_0_dbg_clock_s1_address),                        //                                dbg_clock_s1.address
+		.dbg_clock_s1_readdata                             (mm_interconnect_0_dbg_clock_s1_readdata),                       //                                            .readdata
+		.dbg_data_s1_address                               (mm_interconnect_0_dbg_data_s1_address),                         //                                 dbg_data_s1.address
+		.dbg_data_s1_readdata                              (mm_interconnect_0_dbg_data_s1_readdata),                        //                                            .readdata
+		.dbg_we_s1_address                                 (mm_interconnect_0_dbg_we_s1_address),                           //                                   dbg_we_s1.address
+		.dbg_we_s1_readdata                                (mm_interconnect_0_dbg_we_s1_readdata),                          //                                            .readdata
 		.jtag_uart_0_avalon_jtag_slave_address             (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),       //               jtag_uart_0_avalon_jtag_slave.address
 		.jtag_uart_0_avalon_jtag_slave_write               (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),         //                                            .write
 		.jtag_uart_0_avalon_jtag_slave_read                (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read),          //                                            .read
@@ -315,11 +376,11 @@ module monitor (
 		.prg_we_s1_readdata                                (mm_interconnect_0_prg_we_s1_readdata),                          //                                            .readdata
 		.prg_we_s1_writedata                               (mm_interconnect_0_prg_we_s1_writedata),                         //                                            .writedata
 		.prg_we_s1_chipselect                              (mm_interconnect_0_prg_we_s1_chipselect),                        //                                            .chipselect
-		.reset_s1_address                                  (mm_interconnect_0_reset_s1_address),                            //                                    reset_s1.address
-		.reset_s1_write                                    (mm_interconnect_0_reset_s1_write),                              //                                            .write
-		.reset_s1_readdata                                 (mm_interconnect_0_reset_s1_readdata),                           //                                            .readdata
-		.reset_s1_writedata                                (mm_interconnect_0_reset_s1_writedata),                          //                                            .writedata
-		.reset_s1_chipselect                               (mm_interconnect_0_reset_s1_chipselect),                         //                                            .chipselect
+		.reset_to_cdecv_s1_address                         (mm_interconnect_0_reset_to_cdecv_s1_address),                   //                           reset_to_cdecv_s1.address
+		.reset_to_cdecv_s1_write                           (mm_interconnect_0_reset_to_cdecv_s1_write),                     //                                            .write
+		.reset_to_cdecv_s1_readdata                        (mm_interconnect_0_reset_to_cdecv_s1_readdata),                  //                                            .readdata
+		.reset_to_cdecv_s1_writedata                       (mm_interconnect_0_reset_to_cdecv_s1_writedata),                 //                                            .writedata
+		.reset_to_cdecv_s1_chipselect                      (mm_interconnect_0_reset_to_cdecv_s1_chipselect),                //                                            .chipselect
 		.sysid_qsys_0_control_slave_address                (mm_interconnect_0_sysid_qsys_0_control_slave_address),          //                  sysid_qsys_0_control_slave.address
 		.sysid_qsys_0_control_slave_readdata               (mm_interconnect_0_sysid_qsys_0_control_slave_readdata),         //                                            .readdata
 		.uart_s1_address                                   (mm_interconnect_0_uart_s1_address),                             //                                     uart_s1.address

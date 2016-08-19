@@ -35,13 +35,13 @@ void read_memory(MemoryData* md) {
 //////////////
 
 char checksum_of_memorydata(const MemoryData* md) {
-  const int bytecount = md->bytecount / 4;
+  const int bytecount = md->bytecount;
   int count = 0;
   char sum = 0;
   sum += (char)(0xff & md->bytecount);
   sum += (char)(0x00ff & md->address);
   sum += (char)((0xff00 & md->address) >> 8);
-  sum += (0xf & md->recordtype);
+  sum += (0xff & md->recordtype);
   for (count = 0; count < bytecount; ++count) {
     sum += md->data[count];
   }

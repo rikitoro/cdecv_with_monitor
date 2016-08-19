@@ -4,8 +4,16 @@ Progress: Loading monitor/monitor.qsys
 Progress: Reading input file
 Progress: Adding clk_0 [clock_source 15.1]
 Progress: Parameterizing module clk_0
-Progress: Adding clock [altera_avalon_pio 15.1]
-Progress: Parameterizing module clock
+Progress: Adding clock_to_cdecv [altera_avalon_pio 15.1]
+Progress: Parameterizing module clock_to_cdecv
+Progress: Adding dbg_addr [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_addr
+Progress: Adding dbg_clock [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_clock
+Progress: Adding dbg_data [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_data
+Progress: Adding dbg_we [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_we
 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.1]
 Progress: Parameterizing module jtag_uart_0
 Progress: Adding nios2_processor [altera_nios2_gen2 15.1]
@@ -22,8 +30,8 @@ Progress: Adding prg_clock [altera_avalon_pio 15.1]
 Progress: Parameterizing module prg_clock
 Progress: Adding prg_we [altera_avalon_pio 15.1]
 Progress: Parameterizing module prg_we
-Progress: Adding reset [altera_avalon_pio 15.1]
-Progress: Parameterizing module reset
+Progress: Adding reset_to_cdecv [altera_avalon_pio 15.1]
+Progress: Parameterizing module reset_to_cdecv
 Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.1]
 Progress: Parameterizing module sysid_qsys_0
 Progress: Adding uart [altera_avalon_uart 15.1]
@@ -32,6 +40,9 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: monitor.dbg_clock: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: monitor.dbg_data: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: monitor.dbg_we: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: monitor.prg_RD: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: monitor.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
 Info: monitor.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
@@ -44,8 +55,16 @@ Progress: Loading monitor/monitor.qsys
 Progress: Reading input file
 Progress: Adding clk_0 [clock_source 15.1]
 Progress: Parameterizing module clk_0
-Progress: Adding clock [altera_avalon_pio 15.1]
-Progress: Parameterizing module clock
+Progress: Adding clock_to_cdecv [altera_avalon_pio 15.1]
+Progress: Parameterizing module clock_to_cdecv
+Progress: Adding dbg_addr [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_addr
+Progress: Adding dbg_clock [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_clock
+Progress: Adding dbg_data [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_data
+Progress: Adding dbg_we [altera_avalon_pio 15.1]
+Progress: Parameterizing module dbg_we
 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.1]
 Progress: Parameterizing module jtag_uart_0
 Progress: Adding nios2_processor [altera_nios2_gen2 15.1]
@@ -62,8 +81,8 @@ Progress: Adding prg_clock [altera_avalon_pio 15.1]
 Progress: Parameterizing module prg_clock
 Progress: Adding prg_we [altera_avalon_pio 15.1]
 Progress: Parameterizing module prg_we
-Progress: Adding reset [altera_avalon_pio 15.1]
-Progress: Parameterizing module reset
+Progress: Adding reset_to_cdecv [altera_avalon_pio 15.1]
+Progress: Parameterizing module reset_to_cdecv
 Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.1]
 Progress: Parameterizing module sysid_qsys_0
 Progress: Adding uart [altera_avalon_uart 15.1]
@@ -72,36 +91,51 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: monitor.dbg_clock: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: monitor.dbg_data: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: monitor.dbg_we: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: monitor.prg_RD: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: monitor.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
 Info: monitor.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
 Info: monitor: Generating monitor "monitor" for QUARTUS_SYNTH
 Warning: monitor: "No matching role found for uart:s1:dataavailable (dataavailable)"
 Warning: monitor: "No matching role found for uart:s1:readyfordata (readyfordata)"
-Info: clock: Starting RTL generation for module 'monitor_clock'
-Info: clock:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_clock --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0001_clock_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0001_clock_gen//monitor_clock_component_configuration.pl  --do_build_sim=0  ]
-Info: clock: Done RTL generation for module 'monitor_clock'
-Info: clock: "monitor" instantiated altera_avalon_pio "clock"
+Info: clock_to_cdecv: Starting RTL generation for module 'monitor_clock_to_cdecv'
+Info: clock_to_cdecv:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_clock_to_cdecv --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0001_clock_to_cdecv_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0001_clock_to_cdecv_gen//monitor_clock_to_cdecv_component_configuration.pl  --do_build_sim=0  ]
+Info: clock_to_cdecv: Done RTL generation for module 'monitor_clock_to_cdecv'
+Info: clock_to_cdecv: "monitor" instantiated altera_avalon_pio "clock_to_cdecv"
+Info: dbg_addr: Starting RTL generation for module 'monitor_dbg_addr'
+Info: dbg_addr:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_dbg_addr --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0002_dbg_addr_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0002_dbg_addr_gen//monitor_dbg_addr_component_configuration.pl  --do_build_sim=0  ]
+Info: dbg_addr: Done RTL generation for module 'monitor_dbg_addr'
+Info: dbg_addr: "monitor" instantiated altera_avalon_pio "dbg_addr"
+Info: dbg_clock: Starting RTL generation for module 'monitor_dbg_clock'
+Info: dbg_clock:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_dbg_clock --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0003_dbg_clock_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0003_dbg_clock_gen//monitor_dbg_clock_component_configuration.pl  --do_build_sim=0  ]
+Info: dbg_clock: Done RTL generation for module 'monitor_dbg_clock'
+Info: dbg_clock: "monitor" instantiated altera_avalon_pio "dbg_clock"
+Info: dbg_data: Starting RTL generation for module 'monitor_dbg_data'
+Info: dbg_data:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_dbg_data --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0004_dbg_data_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0004_dbg_data_gen//monitor_dbg_data_component_configuration.pl  --do_build_sim=0  ]
+Info: dbg_data: Done RTL generation for module 'monitor_dbg_data'
+Info: dbg_data: "monitor" instantiated altera_avalon_pio "dbg_data"
 Info: jtag_uart_0: Starting RTL generation for module 'monitor_jtag_uart_0'
-Info: jtag_uart_0:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=monitor_jtag_uart_0 --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0002_jtag_uart_0_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0002_jtag_uart_0_gen//monitor_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=monitor_jtag_uart_0 --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0005_jtag_uart_0_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0005_jtag_uart_0_gen//monitor_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info: jtag_uart_0: Done RTL generation for module 'monitor_jtag_uart_0'
 Info: jtag_uart_0: "monitor" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info: nios2_processor: "monitor" instantiated altera_nios2_gen2 "nios2_processor"
 Info: onchip_memory: Starting RTL generation for module 'monitor_onchip_memory'
-Info: onchip_memory:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=monitor_onchip_memory --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0003_onchip_memory_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0003_onchip_memory_gen//monitor_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=monitor_onchip_memory --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0006_onchip_memory_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0006_onchip_memory_gen//monitor_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
 Info: onchip_memory: Done RTL generation for module 'monitor_onchip_memory'
 Info: onchip_memory: "monitor" instantiated altera_avalon_onchip_memory2 "onchip_memory"
 Info: prg_MA: Starting RTL generation for module 'monitor_prg_MA'
-Info: prg_MA:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_prg_MA --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0004_prg_MA_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0004_prg_MA_gen//monitor_prg_MA_component_configuration.pl  --do_build_sim=0  ]
+Info: prg_MA:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_prg_MA --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0007_prg_MA_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0007_prg_MA_gen//monitor_prg_MA_component_configuration.pl  --do_build_sim=0  ]
 Info: prg_MA: Done RTL generation for module 'monitor_prg_MA'
 Info: prg_MA: "monitor" instantiated altera_avalon_pio "prg_MA"
 Info: prg_RD: Starting RTL generation for module 'monitor_prg_RD'
-Info: prg_RD:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_prg_RD --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0005_prg_RD_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0005_prg_RD_gen//monitor_prg_RD_component_configuration.pl  --do_build_sim=0  ]
+Info: prg_RD:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=monitor_prg_RD --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0008_prg_RD_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0008_prg_RD_gen//monitor_prg_RD_component_configuration.pl  --do_build_sim=0  ]
 Info: prg_RD: Done RTL generation for module 'monitor_prg_RD'
 Info: prg_RD: "monitor" instantiated altera_avalon_pio "prg_RD"
 Info: sysid_qsys_0: "monitor" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
 Info: uart: Starting RTL generation for module 'monitor_uart'
-Info: uart:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart/generate_rtl.pl --name=monitor_uart --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0007_uart_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0007_uart_gen//monitor_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: uart:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64/perl/bin/perl.exe -I D:/altera_lite/15.1/quartus/bin64/perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart -- D:/altera_lite/15.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_uart/generate_rtl.pl --name=monitor_uart --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0010_uart_gen/ --quartus_dir=D:/altera_lite/15.1/quartus --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0010_uart_gen//monitor_uart_component_configuration.pl  --do_build_sim=0  ]
 Info: uart: Done RTL generation for module 'monitor_uart'
 Info: uart: "monitor" instantiated altera_avalon_uart "uart"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
@@ -116,23 +150,27 @@ Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_011: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_012: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_013: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_014: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_015: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "monitor" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: irq_mapper: "monitor" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "monitor" instantiated altera_reset_controller "rst_controller"
 Info: cpu: Starting RTL generation for module 'monitor_nios2_processor_cpu'
-Info: cpu:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64//eperlcmd.exe -I D:/altera_lite/15.1/quartus/bin64//perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=monitor_nios2_processor_cpu --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0010_cpu_gen/ --quartus_bindir=D:/altera_lite/15.1/quartus/bin64/ --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7025_4837471885519270198.dir/0010_cpu_gen//monitor_nios2_processor_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info: cpu: # 2016.08.12 19:16:01 (*) Starting Nios II generation
-Info: cpu: # 2016.08.12 19:16:01 (*)   Checking for plaintext license.
-Info: cpu: # 2016.08.12 19:16:13 (*)   Couldn't query license setup in Quartus directory D:/altera_lite/15.1/quartus/bin64/
-Info: cpu: # 2016.08.12 19:16:13 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2016.08.12 19:16:13 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2016.08.12 19:16:13 (*)   Plaintext license not found.
-Info: cpu: # 2016.08.12 19:16:13 (*)   No license required to generate encrypted Nios II/e.
-Info: cpu: # 2016.08.12 19:16:13 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2016.08.12 19:16:13 (*)   Creating all objects for CPU
-Info: cpu: # 2016.08.12 19:16:17 (*)   Generating RTL from CPU objects
-Info: cpu: # 2016.08.12 19:16:17 (*)   Creating plain-text RTL
-Info: cpu: # 2016.08.12 19:16:19 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec D:/altera_lite/15.1/quartus/bin64//eperlcmd.exe -I D:/altera_lite/15.1/quartus/bin64//perl/lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin/europa -I D:/altera_lite/15.1/quartus/sopc_builder/bin/perl_lib -I D:/altera_lite/15.1/quartus/sopc_builder/bin -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- D:/altera_lite/15.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=monitor_nios2_processor_cpu --dir=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0013_cpu_gen/ --quartus_bindir=D:/altera_lite/15.1/quartus/bin64/ --verilog --config=C:/Users/yoshiaki/AppData/Local/Temp/alt7032_1720254162290974656.dir/0013_cpu_gen//monitor_nios2_processor_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2016.08.19 17:55:33 (*) Starting Nios II generation
+Info: cpu: # 2016.08.19 17:55:33 (*)   Checking for plaintext license.
+Info: cpu: # 2016.08.19 17:55:48 (*)   Couldn't query license setup in Quartus directory D:/altera_lite/15.1/quartus/bin64/
+Info: cpu: # 2016.08.19 17:55:48 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2016.08.19 17:55:48 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2016.08.19 17:55:48 (*)   Plaintext license not found.
+Info: cpu: # 2016.08.19 17:55:48 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2016.08.19 17:55:48 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2016.08.19 17:55:49 (*)   Creating all objects for CPU
+Info: cpu: # 2016.08.19 17:55:56 (*)   Generating RTL from CPU objects
+Info: cpu: # 2016.08.19 17:55:56 (*)   Creating plain-text RTL
+Info: cpu: # 2016.08.19 17:56:03 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'monitor_nios2_processor_cpu'
 Info: cpu: "nios2_processor" instantiated altera_nios2_gen2_unit "cpu"
 Info: nios2_processor_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_processor_data_master_translator"
@@ -157,6 +195,6 @@ Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "r
 Info: Reusing file D:/yoshiaki/devel/quartus_workspace/cdecv_with_monitor/src/monitor/monitor/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: monitor: Done "monitor" with 32 modules, 45 files
+Info: monitor: Done "monitor" with 35 modules, 48 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

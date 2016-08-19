@@ -1,33 +1,43 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
 preplace inst monitor.nios2_processor.cpu -pg 1
-preplace inst monitor.onchip_memory -pg 1 -lvl 3 -y 250
-preplace inst monitor.clk_0 -pg 1 -lvl 1 -y 100
+preplace inst monitor.onchip_memory -pg 1 -lvl 3 -y 750
+preplace inst monitor.clk_0 -pg 1 -lvl 1 -y 470
 preplace inst monitor -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst monitor.prg_we -pg 1 -lvl 3 -y 710
+preplace inst monitor.reset_to_cdecv -pg 1 -lvl 3 -y 1410
+preplace inst monitor.prg_we -pg 1 -lvl 3 -y 1210
 preplace inst monitor.nios2_processor.reset_bridge -pg 1
-preplace inst monitor.prg_RD -pg 1 -lvl 3 -y 510
-preplace inst monitor.nios2_processor -pg 1 -lvl 2 -y 160
-preplace inst monitor.prg_clock -pg 1 -lvl 3 -y 910
-preplace inst monitor.sysid_qsys_0 -pg 1 -lvl 3 -y 330
-preplace inst monitor.prg_WD -pg 1 -lvl 3 -y 610
+preplace inst monitor.dbg_we -pg 1 -lvl 3 -y 330
+preplace inst monitor.dbg_data -pg 1 -lvl 3 -y 430
+preplace inst monitor.prg_RD -pg 1 -lvl 3 -y 1010
+preplace inst monitor.nios2_processor -pg 1 -lvl 2 -y 620
+preplace inst monitor.dbg_clock -pg 1 -lvl 3 -y 130
+preplace inst monitor.prg_clock -pg 1 -lvl 3 -y 1310
+preplace inst monitor.clock_to_cdecv -pg 1 -lvl 3 -y 30
+preplace inst monitor.dbg_addr -pg 1 -lvl 3 -y 230
+preplace inst monitor.sysid_qsys_0 -pg 1 -lvl 3 -y 830
+preplace inst monitor.prg_WD -pg 1 -lvl 3 -y 1110
 preplace inst monitor.nios2_processor.clock_bridge -pg 1
-preplace inst monitor.uart -pg 1 -lvl 3 -y 30
-preplace inst monitor.prg_MA -pg 1 -lvl 3 -y 410
-preplace inst monitor.jtag_uart_0 -pg 1 -lvl 3 -y 150
-preplace inst monitor.reset -pg 1 -lvl 3 -y 810
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)prg_RD.external_connection,(SLAVE)monitor.prg_rd) 1 0 3 NJ 540 NJ 540 NJ
-preplace netloc INTERCONNECT<net_container>monitor</net_container>(SLAVE)prg_we.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)prg_RD.s1,(SLAVE)uart.s1,(SLAVE)prg_MA.s1,(SLAVE)prg_clock.s1,(SLAVE)reset.s1,(MASTER)nios2_processor.data_master,(SLAVE)onchip_memory.s1,(SLAVE)nios2_processor.debug_mem_slave,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)prg_WD.s1,(MASTER)nios2_processor.instruction_master) 1 1 2 320 120 680
-preplace netloc FAN_OUT<net_container>monitor</net_container>(SLAVE)sysid_qsys_0.clk,(MASTER)clk_0.clk,(SLAVE)prg_clock.clk,(SLAVE)prg_WD.clk,(SLAVE)onchip_memory.clk1,(SLAVE)nios2_processor.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)prg_RD.clk,(SLAVE)prg_we.clk,(SLAVE)uart.clk,(SLAVE)prg_MA.clk,(SLAVE)reset.clk) 1 1 2 280 80 720
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)uart.external_connection,(SLAVE)monitor.uart) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_wd,(SLAVE)prg_WD.external_connection) 1 0 3 NJ 640 NJ 640 NJ
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_clock,(SLAVE)prg_clock.external_connection) 1 0 3 NJ 940 NJ 940 NJ
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_ma,(SLAVE)prg_MA.external_connection) 1 0 3 NJ 440 NJ 440 NJ
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)monitor.reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>monitor</net_container>(SLAVE)uart.irq,(SLAVE)jtag_uart_0.irq,(MASTER)nios2_processor.irq) 1 2 1 740
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)reset.external_connection,(SLAVE)monitor.reset_1) 1 0 3 NJ 840 NJ 840 NJ
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)prg_we.external_connection,(SLAVE)monitor.prg_we) 1 0 3 NJ 740 NJ 740 NJ
-preplace netloc FAN_OUT<net_container>monitor</net_container>(SLAVE)prg_we.reset,(SLAVE)onchip_memory.reset1,(SLAVE)jtag_uart_0.reset,(SLAVE)prg_clock.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)nios2_processor.reset,(MASTER)clk_0.clk_reset,(SLAVE)uart.reset,(SLAVE)prg_MA.reset,(SLAVE)prg_WD.reset,(SLAVE)prg_RD.reset,(SLAVE)reset.reset) 1 1 2 300 100 700
-preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-levelinfo -pg 1 0 70 940
-levelinfo -hier monitor 80 110 440 780 930
+preplace inst monitor.uart -pg 1 -lvl 3 -y 530
+preplace inst monitor.prg_MA -pg 1 -lvl 3 -y 910
+preplace inst monitor.jtag_uart_0 -pg 1 -lvl 3 -y 650
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.dbg_clock,(SLAVE)dbg_clock.external_connection) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.uart,(SLAVE)uart.external_connection) 1 0 3 NJ 540 NJ 560 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)reset_to_cdecv.external_connection,(SLAVE)monitor.reset_to_cdecv) 1 0 3 NJ 1440 NJ 1440 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_rd,(SLAVE)prg_RD.external_connection) 1 0 3 NJ 1040 NJ 1040 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)prg_clock.external_connection,(SLAVE)monitor.prg_clock) 1 0 3 NJ 1340 NJ 1340 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)clock_to_cdecv.external_connection,(SLAVE)monitor.clock_to_cdecv) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_wd,(SLAVE)prg_WD.external_connection) 1 0 3 NJ 1140 NJ 1140 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.dbg_addr,(SLAVE)dbg_addr.external_connection) 1 0 3 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_ma,(SLAVE)prg_MA.external_connection) 1 0 3 NJ 940 NJ 940 NJ
+preplace netloc FAN_OUT<net_container>monitor</net_container>(MASTER)nios2_processor.irq,(SLAVE)uart.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 790
+preplace netloc FAN_OUT<net_container>monitor</net_container>(SLAVE)dbg_we.clk,(SLAVE)prg_MA.clk,(SLAVE)prg_we.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)sysid_qsys_0.clk,(SLAVE)prg_RD.clk,(SLAVE)nios2_processor.clk,(SLAVE)reset_to_cdecv.clk,(SLAVE)dbg_clock.clk,(SLAVE)dbg_addr.clk,(SLAVE)onchip_memory.clk1,(SLAVE)prg_WD.clk,(SLAVE)clock_to_cdecv.clk,(MASTER)clk_0.clk,(SLAVE)prg_clock.clk,(SLAVE)uart.clk,(SLAVE)dbg_data.clk) 1 1 2 350 480 750
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)clk_0.clk_in,(SLAVE)monitor.clk) 1 0 1 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)monitor.prg_we,(SLAVE)prg_we.external_connection) 1 0 3 NJ 1240 NJ 1240 NJ
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)dbg_we.external_connection,(SLAVE)monitor.dbg_we) 1 0 3 NJ 280 NJ 280 NJ
+preplace netloc INTERCONNECT<net_container>monitor</net_container>(SLAVE)dbg_clock.s1,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)nios2_processor.debug_mem_slave,(SLAVE)prg_MA.s1,(SLAVE)uart.s1,(SLAVE)prg_clock.s1,(MASTER)nios2_processor.instruction_master,(MASTER)nios2_processor.data_master,(SLAVE)prg_RD.s1,(SLAVE)dbg_data.s1,(SLAVE)prg_WD.s1,(SLAVE)dbg_we.s1,(SLAVE)onchip_memory.s1,(SLAVE)prg_we.s1,(SLAVE)reset_to_cdecv.s1,(SLAVE)clock_to_cdecv.s1,(SLAVE)dbg_addr.s1) 1 1 2 330 760 730
+preplace netloc FAN_OUT<net_container>monitor</net_container>(SLAVE)prg_clock.reset,(SLAVE)reset_to_cdecv.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)uart.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)prg_WD.reset,(SLAVE)nios2_processor.reset,(MASTER)clk_0.clk_reset,(SLAVE)prg_we.reset,(SLAVE)clock_to_cdecv.reset,(SLAVE)onchip_memory.reset1,(SLAVE)prg_RD.reset,(SLAVE)dbg_addr.reset,(SLAVE)dbg_we.reset,(SLAVE)dbg_data.reset,(SLAVE)dbg_clock.reset,(SLAVE)prg_MA.reset) 1 1 2 310 580 770
+preplace netloc EXPORT<net_container>monitor</net_container>(SLAVE)dbg_data.external_connection,(SLAVE)monitor.dbg_data) 1 0 3 NJ 460 NJ 460 NJ
+levelinfo -pg 1 0 100 990
+levelinfo -hier monitor 110 140 470 830 980

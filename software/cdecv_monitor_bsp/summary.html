@@ -22,10 +22,10 @@
 <td width="20%" bgcolor="#77BBFF">BSP Version:</td><td>default</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>Aug 17, 2016 9:33:57 AM</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>2016/08/19 18:32:02</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1471394037434</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1471599122510</td>
 </tr>
 <tr mode="wrap">
 <td width="20%" bgcolor="#77BBFF">BSP Generated Location:</td><td>D:\yoshiaki\devel\quartus_workspace\cdecv_with_monitor\software\cdecv_monitor_bsp</td>
@@ -38,16 +38,28 @@
 <th align="left" width="20%">Slave Descriptor</th><th align="left" width="40%">Address Range</th><th align="left" width="20%">Size</th><th align="left" width="20%">Attributes</th>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>onchip_memory</td><td>0x00008000 - 0x0000FFFF</td><td>32768</td><td class="listing">memory</td>
+<td>onchip_memory</td><td>0x00008000 - 0x00009FFF</td><td>8192</td><td class="listing">memory</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>uart</td><td>0x00000200 - 0x0000021F</td><td>32</td><td class="listing">printable</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>clock</td><td>0x00000070 - 0x0000007F</td><td>16</td><td class="listing">&nbsp;</td>
+<td>dbg_we</td><td>0x000000C0 - 0x000000CF</td><td>16</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>reset</td><td>0x00000060 - 0x0000006F</td><td>16</td><td class="listing">&nbsp;</td>
+<td>dbg_clock</td><td>0x000000B0 - 0x000000BF</td><td>16</td><td class="listing">&nbsp;</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>dbg_data</td><td>0x000000A0 - 0x000000AF</td><td>16</td><td class="listing">&nbsp;</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>dbg_addr</td><td>0x00000090 - 0x0000009F</td><td>16</td><td class="listing">&nbsp;</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>clock_to_cdecv</td><td>0x00000070 - 0x0000007F</td><td>16</td><td class="listing">&nbsp;</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>reset_to_cdecv</td><td>0x00000060 - 0x0000006F</td><td>16</td><td class="listing">&nbsp;</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>prg_we</td><td>0x00000050 - 0x0000005F</td><td>16</td><td class="listing">&nbsp;</td>

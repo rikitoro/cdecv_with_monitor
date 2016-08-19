@@ -1,5 +1,5 @@
 
-`define code_MOV  8'b0000_00xx
+`define code_MOV  8'b0000_xxxx
 `define code_LD   8'b1000_00xx
 `define code_ST   8'b1010_xx00
 `define code_ADD  8'b0010_00xx

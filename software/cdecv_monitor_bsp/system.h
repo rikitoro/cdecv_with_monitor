@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'monitor'
  * SOPC Builder design path: ../../monitor.sopcinfo
  *
- * Generated: Tue Aug 16 14:52:09 JST 2016
+ * Generated: Fri Aug 19 18:32:03 JST 2016
  */
 
 /*
@@ -178,30 +178,138 @@
 
 
 /*
- * clock configuration
+ * clock_to_cdecv configuration
  *
  */
 
-#define ALT_MODULE_CLASS_clock altera_avalon_pio
-#define CLOCK_BASE 0x70
-#define CLOCK_BIT_CLEARING_EDGE_REGISTER 0
-#define CLOCK_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define CLOCK_CAPTURE 0
-#define CLOCK_DATA_WIDTH 1
-#define CLOCK_DO_TEST_BENCH_WIRING 0
-#define CLOCK_DRIVEN_SIM_VALUE 0
-#define CLOCK_EDGE_TYPE "NONE"
-#define CLOCK_FREQ 50000000
-#define CLOCK_HAS_IN 0
-#define CLOCK_HAS_OUT 1
-#define CLOCK_HAS_TRI 0
-#define CLOCK_IRQ -1
-#define CLOCK_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define CLOCK_IRQ_TYPE "NONE"
-#define CLOCK_NAME "/dev/clock"
-#define CLOCK_RESET_VALUE 0
-#define CLOCK_SPAN 16
-#define CLOCK_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_clock_to_cdecv altera_avalon_pio
+#define CLOCK_TO_CDECV_BASE 0x70
+#define CLOCK_TO_CDECV_BIT_CLEARING_EDGE_REGISTER 0
+#define CLOCK_TO_CDECV_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define CLOCK_TO_CDECV_CAPTURE 0
+#define CLOCK_TO_CDECV_DATA_WIDTH 1
+#define CLOCK_TO_CDECV_DO_TEST_BENCH_WIRING 0
+#define CLOCK_TO_CDECV_DRIVEN_SIM_VALUE 0
+#define CLOCK_TO_CDECV_EDGE_TYPE "NONE"
+#define CLOCK_TO_CDECV_FREQ 50000000
+#define CLOCK_TO_CDECV_HAS_IN 0
+#define CLOCK_TO_CDECV_HAS_OUT 1
+#define CLOCK_TO_CDECV_HAS_TRI 0
+#define CLOCK_TO_CDECV_IRQ -1
+#define CLOCK_TO_CDECV_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CLOCK_TO_CDECV_IRQ_TYPE "NONE"
+#define CLOCK_TO_CDECV_NAME "/dev/clock_to_cdecv"
+#define CLOCK_TO_CDECV_RESET_VALUE 0
+#define CLOCK_TO_CDECV_SPAN 16
+#define CLOCK_TO_CDECV_TYPE "altera_avalon_pio"
+
+
+/*
+ * dbg_addr configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dbg_addr altera_avalon_pio
+#define DBG_ADDR_BASE 0x90
+#define DBG_ADDR_BIT_CLEARING_EDGE_REGISTER 0
+#define DBG_ADDR_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DBG_ADDR_CAPTURE 0
+#define DBG_ADDR_DATA_WIDTH 4
+#define DBG_ADDR_DO_TEST_BENCH_WIRING 0
+#define DBG_ADDR_DRIVEN_SIM_VALUE 0
+#define DBG_ADDR_EDGE_TYPE "NONE"
+#define DBG_ADDR_FREQ 50000000
+#define DBG_ADDR_HAS_IN 0
+#define DBG_ADDR_HAS_OUT 1
+#define DBG_ADDR_HAS_TRI 0
+#define DBG_ADDR_IRQ -1
+#define DBG_ADDR_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DBG_ADDR_IRQ_TYPE "NONE"
+#define DBG_ADDR_NAME "/dev/dbg_addr"
+#define DBG_ADDR_RESET_VALUE 0
+#define DBG_ADDR_SPAN 16
+#define DBG_ADDR_TYPE "altera_avalon_pio"
+
+
+/*
+ * dbg_clock configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dbg_clock altera_avalon_pio
+#define DBG_CLOCK_BASE 0xb0
+#define DBG_CLOCK_BIT_CLEARING_EDGE_REGISTER 0
+#define DBG_CLOCK_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DBG_CLOCK_CAPTURE 0
+#define DBG_CLOCK_DATA_WIDTH 1
+#define DBG_CLOCK_DO_TEST_BENCH_WIRING 0
+#define DBG_CLOCK_DRIVEN_SIM_VALUE 0
+#define DBG_CLOCK_EDGE_TYPE "NONE"
+#define DBG_CLOCK_FREQ 50000000
+#define DBG_CLOCK_HAS_IN 1
+#define DBG_CLOCK_HAS_OUT 0
+#define DBG_CLOCK_HAS_TRI 0
+#define DBG_CLOCK_IRQ -1
+#define DBG_CLOCK_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DBG_CLOCK_IRQ_TYPE "NONE"
+#define DBG_CLOCK_NAME "/dev/dbg_clock"
+#define DBG_CLOCK_RESET_VALUE 0
+#define DBG_CLOCK_SPAN 16
+#define DBG_CLOCK_TYPE "altera_avalon_pio"
+
+
+/*
+ * dbg_data configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dbg_data altera_avalon_pio
+#define DBG_DATA_BASE 0xa0
+#define DBG_DATA_BIT_CLEARING_EDGE_REGISTER 0
+#define DBG_DATA_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DBG_DATA_CAPTURE 0
+#define DBG_DATA_DATA_WIDTH 16
+#define DBG_DATA_DO_TEST_BENCH_WIRING 0
+#define DBG_DATA_DRIVEN_SIM_VALUE 0
+#define DBG_DATA_EDGE_TYPE "NONE"
+#define DBG_DATA_FREQ 50000000
+#define DBG_DATA_HAS_IN 1
+#define DBG_DATA_HAS_OUT 0
+#define DBG_DATA_HAS_TRI 0
+#define DBG_DATA_IRQ -1
+#define DBG_DATA_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DBG_DATA_IRQ_TYPE "NONE"
+#define DBG_DATA_NAME "/dev/dbg_data"
+#define DBG_DATA_RESET_VALUE 0
+#define DBG_DATA_SPAN 16
+#define DBG_DATA_TYPE "altera_avalon_pio"
+
+
+/*
+ * dbg_we configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dbg_we altera_avalon_pio
+#define DBG_WE_BASE 0xc0
+#define DBG_WE_BIT_CLEARING_EDGE_REGISTER 0
+#define DBG_WE_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DBG_WE_CAPTURE 0
+#define DBG_WE_DATA_WIDTH 1
+#define DBG_WE_DO_TEST_BENCH_WIRING 0
+#define DBG_WE_DRIVEN_SIM_VALUE 0
+#define DBG_WE_EDGE_TYPE "NONE"
+#define DBG_WE_FREQ 50000000
+#define DBG_WE_HAS_IN 1
+#define DBG_WE_HAS_OUT 0
+#define DBG_WE_HAS_TRI 0
+#define DBG_WE_IRQ -1
+#define DBG_WE_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DBG_WE_IRQ_TYPE "NONE"
+#define DBG_WE_NAME "/dev/dbg_we"
+#define DBG_WE_RESET_VALUE 0
+#define DBG_WE_SPAN 16
+#define DBG_WE_TYPE "altera_avalon_pio"
 
 
 /*
@@ -256,8 +364,8 @@
 #define ONCHIP_MEMORY_READ_DURING_WRITE_MODE "DONT_CARE"
 #define ONCHIP_MEMORY_SINGLE_CLOCK_OP 0
 #define ONCHIP_MEMORY_SIZE_MULTIPLE 1
-#define ONCHIP_MEMORY_SIZE_VALUE 32768
-#define ONCHIP_MEMORY_SPAN 32768
+#define ONCHIP_MEMORY_SIZE_VALUE 8192
+#define ONCHIP_MEMORY_SPAN 8192
 #define ONCHIP_MEMORY_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY_WRITABLE 1
 
@@ -398,30 +506,30 @@
 
 
 /*
- * reset configuration
+ * reset_to_cdecv configuration
  *
  */
 
-#define ALT_MODULE_CLASS_reset altera_avalon_pio
-#define RESET_BASE 0x60
-#define RESET_BIT_CLEARING_EDGE_REGISTER 0
-#define RESET_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define RESET_CAPTURE 0
-#define RESET_DATA_WIDTH 1
-#define RESET_DO_TEST_BENCH_WIRING 0
-#define RESET_DRIVEN_SIM_VALUE 0
-#define RESET_EDGE_TYPE "NONE"
-#define RESET_FREQ 50000000
-#define RESET_HAS_IN 0
-#define RESET_HAS_OUT 1
-#define RESET_HAS_TRI 0
-#define RESET_IRQ -1
-#define RESET_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define RESET_IRQ_TYPE "NONE"
-#define RESET_NAME "/dev/reset"
-#define RESET_RESET_VALUE 0
-#define RESET_SPAN 16
-#define RESET_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_reset_to_cdecv altera_avalon_pio
+#define RESET_TO_CDECV_BASE 0x60
+#define RESET_TO_CDECV_BIT_CLEARING_EDGE_REGISTER 0
+#define RESET_TO_CDECV_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define RESET_TO_CDECV_CAPTURE 0
+#define RESET_TO_CDECV_DATA_WIDTH 1
+#define RESET_TO_CDECV_DO_TEST_BENCH_WIRING 0
+#define RESET_TO_CDECV_DRIVEN_SIM_VALUE 0
+#define RESET_TO_CDECV_EDGE_TYPE "NONE"
+#define RESET_TO_CDECV_FREQ 50000000
+#define RESET_TO_CDECV_HAS_IN 0
+#define RESET_TO_CDECV_HAS_OUT 1
+#define RESET_TO_CDECV_HAS_TRI 0
+#define RESET_TO_CDECV_IRQ -1
+#define RESET_TO_CDECV_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define RESET_TO_CDECV_IRQ_TYPE "NONE"
+#define RESET_TO_CDECV_NAME "/dev/reset_to_cdecv"
+#define RESET_TO_CDECV_RESET_VALUE 0
+#define RESET_TO_CDECV_SPAN 16
+#define RESET_TO_CDECV_TYPE "altera_avalon_pio"
 
 
 /*
@@ -436,7 +544,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1471325430
+#define SYSID_QSYS_0_TIMESTAMP 1471598055
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 
