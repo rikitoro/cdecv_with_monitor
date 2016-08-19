@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Aug 17, 2016 9:33:57 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1471394037434</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>2016/08/19 18:32:02</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1471599122510</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\yoshiaki\devel\quartus_workspace\cdecv_with_monitor\software\cdecv_monitor_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\monitor.sopcinfo</SopcDesignFile>
@@ -953,14 +953,38 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>reset</slaveDescriptor>
+                <slaveDescriptor>reset_to_cdecv</slaveDescriptor>
                 <addressRange>0x00000060 - 0x0000006F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>clock</slaveDescriptor>
+                <slaveDescriptor>clock_to_cdecv</slaveDescriptor>
                 <addressRange>0x00000070 - 0x0000007F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>dbg_addr</slaveDescriptor>
+                <addressRange>0x00000090 - 0x0000009F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>dbg_data</slaveDescriptor>
+                <addressRange>0x000000A0 - 0x000000AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>dbg_clock</slaveDescriptor>
+                <addressRange>0x000000B0 - 0x000000BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>dbg_we</slaveDescriptor>
+                <addressRange>0x000000C0 - 0x000000CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
@@ -972,8 +996,8 @@
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>onchip_memory</slaveDescriptor>
-                <addressRange>0x00008000 - 0x0000FFFF</addressRange>
-                <addressSpan>32768</addressSpan>
+                <addressRange>0x00008000 - 0x00009FFF</addressRange>
+                <addressSpan>8192</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <LinkerSection>

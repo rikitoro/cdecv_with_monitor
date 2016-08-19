@@ -88,6 +88,7 @@
 #include "utility/monitor_command.h"
 // data
 #include "memory_data.h"
+#include "debug_data.h"
 
 const char* EOF = ":00000001FF\r\n";
 
@@ -96,8 +97,29 @@ void do_AR();
 void do_NR();
 void do_AC();
 void do_NC();
+//
 void do_RM(const char* hf);
 void do_WM(const char* hf);
+//
+void do_PC();
+void do_RA();
+void do_RB();
+void do_RC();
+void do_RT();
+void do_RR();
+void do_FL();
+void do_XB();
+void do_MA();
+void do_WD();
+void do_RD();
+void do_RI();
+void do_XS();
+void do_XD();
+void do_OP();
+void do_CC();
+void do_WE();
+void do_CL();
+//
 void do_default();
 //////////
 
@@ -106,7 +128,9 @@ int main()
 { 
   char rx_msg[600];
 
-  alt_putstr("Hello, This is Tiny MIPS monitor!\r\n");
+  //alt_putstr("Hello, This is Tiny MIPS monitor!\r\n");
+  tx_str(EOF);
+
   while (1) {
     rx_str(rx_msg);
 
@@ -120,9 +144,47 @@ int main()
       case MONITOR_COMMAND_NC:  // negate clock
         do_NC() ;           break;
       case MONITOR_COMMAND_RM:  // read memory
-        do_RM(&rx_msg[2]);   break;
+        do_RM(&rx_msg[2]);  break;
       case MONITOR_COMMAND_WM:  // write memory
-        do_WM(&rx_msg[2]);   break;
+        do_WM(&rx_msg[2]);  break;
+        //
+      case MONITOR_COMMAND_PC:  // read PC
+        do_PC();            break;
+      case MONITOR_COMMAND_RA:  // read A
+        do_RA();            break;
+      case MONITOR_COMMAND_RB:  // read B
+        do_RB();            break;
+      case MONITOR_COMMAND_RC:  // read C
+        do_RC();            break;
+      case MONITOR_COMMAND_RT:  // read T
+        do_RT();            break;
+      case MONITOR_COMMAND_RR:  // read R
+        do_RR();            break;
+      case MONITOR_COMMAND_FL:  // read FLG
+        do_FL();            break;
+      case MONITOR_COMMAND_XB:  // read Xbus
+        do_XB();            break;
+      case MONITOR_COMMAND_MA:  // read MA
+        do_MA();            break;
+      case MONITOR_COMMAND_WD:  // read WD
+        do_WD();            break;
+      case MONITOR_COMMAND_RD:  // read RD
+        do_RD();            break;
+      case MONITOR_COMMAND_RI:  // read RI
+        do_RI();            break;
+      case MONITOR_COMMAND_XS:  // read xsrc {3bit}
+        do_XS();            break;
+      case MONITOR_COMMAND_XD:  // read xdst {10bit}
+        do_XD();            break;
+      case MONITOR_COMMAND_OP:  // read aluop (4bit)
+        do_OP();            break;
+      case MONITOR_COMMAND_CC:  // read cycle counter
+        do_CC();            break;
+          // debug we, and clock
+      case MONITOR_COMMAND_WE:  // read we
+        do_WE();            break;
+      case MONITOR_COMMAND_CL:  // read clock
+        do_CL();            break;
       default:
         do_default();       break;
     }
@@ -168,6 +230,112 @@ void do_WM(const char* hf) {
   hexformat_to_memorydata(hf, &md);
   write_memory(&md);
   tx_str(EOF);
+}
+
+//
+void do_PC() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_PC(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RA() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_A(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RB() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_B(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RC() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_C(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RT() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_T(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RR() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_R(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_FL() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_FLG(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_XB() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_Xbus(), tx_msg);
+  tx_str(tx_msg);
+}
+void do_MA() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_MA(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_WD() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_WD(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RD() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_RD(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_RI() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_I(), tx_msg);
+  tx_str(tx_msg);
+
+}
+void do_XS() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_xsrc(), tx_msg);
+  tx_str(tx_msg);
+}
+void do_XD() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_xdst(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_OP() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_aluop(), tx_msg);
+  tx_str(tx_msg);
+}
+void do_CC() {
+  char tx_msg[20];
+  debugdata16_to_hexformat(dbg_cycle_count(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_WE() {
+  char tx_msg[20];
+  debugdata8_to_hexformat(dbg_we(), tx_msg);
+  tx_str(tx_msg);
+}
+
+void do_CL() {
+  char tx_msg[20];
+  debugdata8_to_hexformat(dbg_clock(), tx_msg);
+  tx_str(tx_msg);
 }
 
 void do_default() {

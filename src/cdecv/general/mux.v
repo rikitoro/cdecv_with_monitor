@@ -25,10 +25,10 @@ module mux4 # (parameter WIDTH = 8) (
   
   always @ (*) begin
     case (sel)
-      3'b00: y = d0;
-      3'b01: y = d1;
-      3'b10: y = d2;
-      3'b11: y = d3;
+      2'b00: y = d0;
+      2'b01: y = d1;
+      2'b10: y = d2;
+      2'b11: y = d3;
     endcase
   end
 endmodule

@@ -58,7 +58,7 @@ module memory(
     .MA         (MA),
     .we_ram     (we_ram),
     .we_io      (we_io),
-    .sel_ram_io (sel_ram_io),
+    .sel_ram_io (sel_ram_io)
     );
     
   mux2 mux_ram_io(

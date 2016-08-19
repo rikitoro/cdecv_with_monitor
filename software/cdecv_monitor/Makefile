@@ -151,6 +151,8 @@ C_SRCS += src/peripheral_driver/reset.c
 C_SRCS += src/peripheral_driver/memory.c
 C_SRCS += src/memory_data.c
 C_SRCS += src/peripheral_driver/clock.c
+C_SRCS += src/peripheral_driver/dbg.c
+C_SRCS += src/debug_data.c
 CXX_SRCS :=
 ASM_SRCS :=
 
