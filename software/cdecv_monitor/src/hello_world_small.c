@@ -218,7 +218,7 @@ void do_RM(const char* hf) {
   MemoryData md;
   char tx_msg[522];
 
-  hexformat_to_memorydata(hf, &md);
+  shorthexformat_to_memorydata(hf, &md);
   read_memory(&md);
   memorydata_to_hexformat(&md, tx_msg);
   tx_str(tx_msg);

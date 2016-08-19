@@ -19,6 +19,8 @@ void read_memory(MemoryData* md);
 
 // hex format string <-> memory_data
 void hexformat_to_memorydata(const char* hf, MemoryData* md);
+void shorthexformat_to_memorydata(const char* hf, MemoryData* md);
+
 void memorydata_to_hexformat(const MemoryData* md, char* hf);
 
 //
