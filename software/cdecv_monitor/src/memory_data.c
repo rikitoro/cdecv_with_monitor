@@ -61,6 +61,17 @@ void hexformat_to_memorydata(const char* hf, MemoryData* md) {
   }
 }
 
+void shorthexformat_to_memorydata(const char* hf, MemoryData* md) {
+  int i;
+
+  md->bytecount  = bytecount_of_hexformat(hf);
+  md->address    = address_of_hexformat(hf);
+  md->recordtype = DATA_TYPE;
+  for (i = 0; i < md->bytecount; ++i) {
+    md->data[i] = 0;
+  }
+}
+
 void memorydata_to_hexformat(const MemoryData* md, char* hf) {
   int i = 0;
   int checksum = (int)checksum_of_memorydata(md);
