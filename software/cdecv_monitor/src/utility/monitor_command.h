@@ -31,7 +31,8 @@ typedef enum {
   MONITOR_COMMAND_CC  = 22, // read cycle counter
   // debug we, and clock
   MONITOR_COMMAND_WE  = 23, // read we
-  MONITOR_COMMAND_CL  = 24  // read clock
+  MONITOR_COMMAND_CL  = 24, // read clock
+  MONIROR_COMMAND_ES  = 25  // read end_sq
 } MonitorCommand;
 
 MonitorCommand monitor_command(char* str);

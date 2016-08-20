@@ -38,6 +38,7 @@ MonitorCommand monitor_command(char* str) {
   const int CC = unique('C','C');
   const int WE = unique('W','E');
   const int CL = unique('C','L');
+  const int ES = unique('E','S');
 
   //
   const int command = unique(str[0], str[1]);
@@ -91,6 +92,8 @@ MonitorCommand monitor_command(char* str) {
     return MONITOR_COMMAND_WE;
   } else if (command == CL) {
     return MONITOR_COMMAND_CL;
+  } else if (command == ES) {
+    return MONIROR_COMMAND_ES;
   } else {
     return MONITOR_COMMAND_ERR;
   }

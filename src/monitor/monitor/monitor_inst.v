@@ -13,6 +13,7 @@
 		.reset_reset_n         (<connected-to-reset_reset_n>),         //          reset.reset_n
 		.reset_to_cdecv_export (<connected-to-reset_to_cdecv_export>), // reset_to_cdecv.export
 		.uart_rxd              (<connected-to-uart_rxd>),              //           uart.rxd
-		.uart_txd              (<connected-to-uart_txd>)               //               .txd
+		.uart_txd              (<connected-to-uart_txd>),              //               .txd
+		.dbg_end_sq_export     (<connected-to-dbg_end_sq_export>)      //     dbg_end_sq.export
 	);
 

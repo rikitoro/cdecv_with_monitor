@@ -101,6 +101,27 @@
          type = "String";
       }
    }
+   element dbg_end_sq
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element dbg_end_sq.s1
+   {
+      datum baseAddress
+      {
+         value = "208";
+         type = "String";
+      }
+   }
    element dbg_we
    {
       datum _sortIndex
@@ -315,7 +336,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "17";
          type = "int";
       }
       datum sopceditor_expanded
@@ -372,6 +393,11 @@
  <interface
    name="dbg_data"
    internal="dbg_data.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="dbg_end_sq"
+   internal="dbg_end_sq.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -481,6 +507,20 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="16" />
  </module>
+ <module name="dbg_end_sq" kind="altera_avalon_pio" version="15.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
  <module name="dbg_we" kind="altera_avalon_pio" version="15.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -538,7 +578,7 @@
   <parameter name="dataAddrWidth" value="16" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='jtag_uart_0.avalon_jtag_slave' start='0x0' end='0x8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='sysid_qsys_0.control_slave' start='0x8' end='0x10' type='altera_avalon_sysid_qsys.control_slave' /><slave name='prg_MA.s1' start='0x10' end='0x20' type='altera_avalon_pio.s1' /><slave name='prg_WD.s1' start='0x20' end='0x30' type='altera_avalon_pio.s1' /><slave name='prg_RD.s1' start='0x30' end='0x40' type='altera_avalon_pio.s1' /><slave name='prg_clock.s1' start='0x40' end='0x50' type='altera_avalon_pio.s1' /><slave name='prg_we.s1' start='0x50' end='0x60' type='altera_avalon_pio.s1' /><slave name='reset_to_cdecv.s1' start='0x60' end='0x70' type='altera_avalon_pio.s1' /><slave name='clock_to_cdecv.s1' start='0x70' end='0x80' type='altera_avalon_pio.s1' /><slave name='dbg_addr.s1' start='0x90' end='0xA0' type='altera_avalon_pio.s1' /><slave name='dbg_data.s1' start='0xA0' end='0xB0' type='altera_avalon_pio.s1' /><slave name='dbg_clock.s1' start='0xB0' end='0xC0' type='altera_avalon_pio.s1' /><slave name='dbg_we.s1' start='0xC0' end='0xD0' type='altera_avalon_pio.s1' /><slave name='uart.s1' start='0x200' end='0x220' type='altera_avalon_uart.s1' /><slave name='nios2_processor.debug_mem_slave' start='0x800' end='0x1000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='onchip_memory.s1' start='0x8000' end='0xA000' type='altera_avalon_onchip_memory2.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='jtag_uart_0.avalon_jtag_slave' start='0x0' end='0x8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='sysid_qsys_0.control_slave' start='0x8' end='0x10' type='altera_avalon_sysid_qsys.control_slave' /><slave name='prg_MA.s1' start='0x10' end='0x20' type='altera_avalon_pio.s1' /><slave name='prg_WD.s1' start='0x20' end='0x30' type='altera_avalon_pio.s1' /><slave name='prg_RD.s1' start='0x30' end='0x40' type='altera_avalon_pio.s1' /><slave name='prg_clock.s1' start='0x40' end='0x50' type='altera_avalon_pio.s1' /><slave name='prg_we.s1' start='0x50' end='0x60' type='altera_avalon_pio.s1' /><slave name='reset_to_cdecv.s1' start='0x60' end='0x70' type='altera_avalon_pio.s1' /><slave name='clock_to_cdecv.s1' start='0x70' end='0x80' type='altera_avalon_pio.s1' /><slave name='dbg_addr.s1' start='0x90' end='0xA0' type='altera_avalon_pio.s1' /><slave name='dbg_data.s1' start='0xA0' end='0xB0' type='altera_avalon_pio.s1' /><slave name='dbg_clock.s1' start='0xB0' end='0xC0' type='altera_avalon_pio.s1' /><slave name='dbg_we.s1' start='0xC0' end='0xD0' type='altera_avalon_pio.s1' /><slave name='dbg_end_sq.s1' start='0xD0' end='0xE0' type='altera_avalon_pio.s1' /><slave name='uart.s1' start='0x200' end='0x220' type='altera_avalon_uart.s1' /><slave name='nios2_processor.debug_mem_slave' start='0x800' end='0x1000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='onchip_memory.s1' start='0x8000' end='0xA000' type='altera_avalon_onchip_memory2.s1' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -982,6 +1022,15 @@
  <connection
    kind="avalon"
    version="15.1"
+   start="nios2_processor.data_master"
+   end="dbg_end_sq.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00d0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="15.1"
    start="nios2_processor.instruction_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -1051,6 +1100,7 @@
  <connection kind="clock" version="15.1" start="clk_0.clk" end="dbg_clock.clk" />
  <connection kind="clock" version="15.1" start="clk_0.clk" end="dbg_we.clk" />
  <connection kind="clock" version="15.1" start="clk_0.clk" end="sysid_qsys_0.clk" />
+ <connection kind="clock" version="15.1" start="clk_0.clk" end="dbg_end_sq.clk" />
  <connection
    kind="clock"
    version="15.1"
@@ -1141,6 +1191,11 @@
    version="15.1"
    start="clk_0.clk_reset"
    end="dbg_we.reset" />
+ <connection
+   kind="reset"
+   version="15.1"
+   start="clk_0.clk_reset"
+   end="dbg_end_sq.reset" />
  <connection
    kind="reset"
    version="15.1"

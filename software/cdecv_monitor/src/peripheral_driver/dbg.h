@@ -21,7 +21,7 @@ int dbg_cycle_count();
 
 char dbg_clock();
 char dbg_we();
-
+char dbg_end_sq();
 
 
 #endif /* DBG_H_ */

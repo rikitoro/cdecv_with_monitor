@@ -14,7 +14,8 @@ module monitor (
 	reset_reset_n,
 	reset_to_cdecv_export,
 	uart_rxd,
-	uart_txd);	
+	uart_txd,
+	dbg_end_sq_export);	
 
 	input		clk_clk;
 	output		clock_to_cdecv_export;
@@ -31,4 +32,5 @@ module monitor (
 	output		reset_to_cdecv_export;
 	input		uart_rxd;
 	output		uart_txd;
+	input		dbg_end_sq_export;
 endmodule
