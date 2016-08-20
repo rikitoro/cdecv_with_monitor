@@ -14,7 +14,8 @@
 			reset_reset_n         : in  std_logic                     := 'X';             -- reset_n
 			reset_to_cdecv_export : out std_logic;                                        -- export
 			uart_rxd              : in  std_logic                     := 'X';             -- rxd
-			uart_txd              : out std_logic                                         -- txd
+			uart_txd              : out std_logic;                                        -- txd
+			dbg_end_sq_export     : in  std_logic                     := 'X'              -- export
 		);
 	end component monitor;
 
@@ -34,6 +35,7 @@
 			reset_reset_n         => CONNECTED_TO_reset_reset_n,         --          reset.reset_n
 			reset_to_cdecv_export => CONNECTED_TO_reset_to_cdecv_export, -- reset_to_cdecv.export
 			uart_rxd              => CONNECTED_TO_uart_rxd,              --           uart.rxd
-			uart_txd              => CONNECTED_TO_uart_txd               --               .txd
+			uart_txd              => CONNECTED_TO_uart_txd,              --               .txd
+			dbg_end_sq_export     => CONNECTED_TO_dbg_end_sq_export      --     dbg_end_sq.export
 		);
 

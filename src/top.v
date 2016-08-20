@@ -228,6 +228,7 @@ module top(
     .dbg_data_export        (dbg_data1),          //       dbg_data.export
     .dbg_clock_export       (clock),              //      dbg_clock.export
     .dbg_we_export          (we),                 //         dbg_we.export
+    .dbg_end_sq_export      (end_sq),             //     dbg_end_sq.export
     //
     .uart_rxd               (uart_rxd),           //           uart.rxd
     .uart_txd               (uart_txd)            //               .txd

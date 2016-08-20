@@ -80,3 +80,6 @@ char dbg_we() {
   return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_WE_BASE);
 }
 
+char dbg_end_sq() {
+  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_END_SQ_BASE);
+}

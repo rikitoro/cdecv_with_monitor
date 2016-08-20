@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_processor' in SOPC Builder design 'monitor'
  * SOPC Builder design path: ../../monitor.sopcinfo
  *
- * Generated: Sat Aug 20 08:01:16 JST 2016
+ * Generated: Sat Aug 20 10:37:17 JST 2016
  */
 
 /*
@@ -286,6 +286,33 @@
 
 
 /*
+ * dbg_end_sq configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_dbg_end_sq altera_avalon_pio
+#define DBG_END_SQ_BASE 0xd0
+#define DBG_END_SQ_BIT_CLEARING_EDGE_REGISTER 0
+#define DBG_END_SQ_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define DBG_END_SQ_CAPTURE 0
+#define DBG_END_SQ_DATA_WIDTH 1
+#define DBG_END_SQ_DO_TEST_BENCH_WIRING 0
+#define DBG_END_SQ_DRIVEN_SIM_VALUE 0
+#define DBG_END_SQ_EDGE_TYPE "NONE"
+#define DBG_END_SQ_FREQ 50000000
+#define DBG_END_SQ_HAS_IN 1
+#define DBG_END_SQ_HAS_OUT 0
+#define DBG_END_SQ_HAS_TRI 0
+#define DBG_END_SQ_IRQ -1
+#define DBG_END_SQ_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define DBG_END_SQ_IRQ_TYPE "NONE"
+#define DBG_END_SQ_NAME "/dev/dbg_end_sq"
+#define DBG_END_SQ_RESET_VALUE 0
+#define DBG_END_SQ_SPAN 16
+#define DBG_END_SQ_TYPE "altera_avalon_pio"
+
+
+/*
  * dbg_we configuration
  *
  */
@@ -544,7 +571,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1471599300
+#define SYSID_QSYS_0_TIMESTAMP 1471653799
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 

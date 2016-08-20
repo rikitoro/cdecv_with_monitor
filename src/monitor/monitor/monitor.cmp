@@ -5,6 +5,7 @@
 			dbg_addr_export       : out std_logic_vector(3 downto 0);                     -- export
 			dbg_clock_export      : in  std_logic                     := 'X';             -- export
 			dbg_data_export       : in  std_logic_vector(15 downto 0) := (others => 'X'); -- export
+			dbg_end_sq_export     : in  std_logic                     := 'X';             -- export
 			dbg_we_export         : in  std_logic                     := 'X';             -- export
 			prg_clock_export      : out std_logic;                                        -- export
 			prg_ma_export         : out std_logic_vector(7 downto 0);                     -- export

@@ -119,6 +119,7 @@ void do_OP();
 void do_CC();
 void do_WE();
 void do_CL();
+void do_ES();
 //
 void do_default();
 //////////
@@ -180,11 +181,13 @@ int main()
         do_OP();            break;
       case MONITOR_COMMAND_CC:  // read cycle counter
         do_CC();            break;
-          // debug we, and clock
+      // debug we, and clock
       case MONITOR_COMMAND_WE:  // read we
         do_WE();            break;
       case MONITOR_COMMAND_CL:  // read clock
         do_CL();            break;
+      case MONIROR_COMMAND_ES:  // read end_sq
+        do_ES();            break;
       default:
         do_default();       break;
     }
@@ -298,6 +301,7 @@ void do_RD() {
   tx_str(tx_msg);
 }
 
+
 void do_RI() {
   char tx_msg[20];
   debugdata16_to_hexformat(dbg_I(), tx_msg);
@@ -338,6 +342,13 @@ void do_CL() {
   tx_str(tx_msg);
 }
 
+void do_ES() {
+  char tx_msg[20];
+  debugdata8_to_hexformat(dbg_end_sq(), tx_msg);
+  tx_str(tx_msg);
+}
+
 void do_default() {
   tx_str(EOF);
 }
+

@@ -9,6 +9,7 @@ module monitor (
 		output wire [3:0]  dbg_addr_export,       //       dbg_addr.export
 		input  wire        dbg_clock_export,      //      dbg_clock.export
 		input  wire [15:0] dbg_data_export,       //       dbg_data.export
+		input  wire        dbg_end_sq_export,     //     dbg_end_sq.export
 		input  wire        dbg_we_export,         //         dbg_we.export
 		output wire        prg_clock_export,      //      prg_clock.export
 		output wire [7:0]  prg_ma_export,         //         prg_ma.export
@@ -107,10 +108,12 @@ module monitor (
 	wire   [1:0] mm_interconnect_0_dbg_clock_s1_address;                        // mm_interconnect_0:dbg_clock_s1_address -> dbg_clock:address
 	wire  [31:0] mm_interconnect_0_dbg_we_s1_readdata;                          // dbg_we:readdata -> mm_interconnect_0:dbg_we_s1_readdata
 	wire   [1:0] mm_interconnect_0_dbg_we_s1_address;                           // mm_interconnect_0:dbg_we_s1_address -> dbg_we:address
+	wire  [31:0] mm_interconnect_0_dbg_end_sq_s1_readdata;                      // dbg_end_sq:readdata -> mm_interconnect_0:dbg_end_sq_s1_readdata
+	wire   [1:0] mm_interconnect_0_dbg_end_sq_s1_address;                       // mm_interconnect_0:dbg_end_sq_s1_address -> dbg_end_sq:address
 	wire         irq_mapper_receiver0_irq;                                      // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                      // uart:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] nios2_processor_irq_irq;                                       // irq_mapper:sender_irq -> nios2_processor:irq
-	wire         rst_controller_reset_out_reset;                                // rst_controller:reset_out -> [clock_to_cdecv:reset_n, dbg_addr:reset_n, dbg_clock:reset_n, dbg_data:reset_n, dbg_we:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:nios2_processor_reset_reset_bridge_in_reset_reset, nios2_processor:reset_n, onchip_memory:reset, prg_MA:reset_n, prg_RD:reset_n, prg_WD:reset_n, prg_clock:reset_n, prg_we:reset_n, reset_to_cdecv:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart:reset_n]
+	wire         rst_controller_reset_out_reset;                                // rst_controller:reset_out -> [clock_to_cdecv:reset_n, dbg_addr:reset_n, dbg_clock:reset_n, dbg_data:reset_n, dbg_end_sq:reset_n, dbg_we:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:nios2_processor_reset_reset_bridge_in_reset_reset, nios2_processor:reset_n, onchip_memory:reset, prg_MA:reset_n, prg_RD:reset_n, prg_WD:reset_n, prg_clock:reset_n, prg_we:reset_n, reset_to_cdecv:reset_n, rst_translator:in_reset, sysid_qsys_0:reset_n, uart:reset_n]
 	wire         rst_controller_reset_out_reset_req;                            // rst_controller:reset_req -> [nios2_processor:reset_req, onchip_memory:reset_req, rst_translator:reset_req_in]
 
 	monitor_clock_to_cdecv clock_to_cdecv (
@@ -149,6 +152,14 @@ module monitor (
 		.address  (mm_interconnect_0_dbg_data_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_0_dbg_data_s1_readdata), //                    .readdata
 		.in_port  (dbg_data_export)                         // external_connection.export
+	);
+
+	monitor_dbg_clock dbg_end_sq (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_0_dbg_end_sq_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_dbg_end_sq_s1_readdata), //                    .readdata
+		.in_port  (dbg_end_sq_export)                         // external_connection.export
 	);
 
 	monitor_dbg_clock dbg_we (
@@ -330,6 +341,8 @@ module monitor (
 		.dbg_clock_s1_readdata                             (mm_interconnect_0_dbg_clock_s1_readdata),                       //                                            .readdata
 		.dbg_data_s1_address                               (mm_interconnect_0_dbg_data_s1_address),                         //                                 dbg_data_s1.address
 		.dbg_data_s1_readdata                              (mm_interconnect_0_dbg_data_s1_readdata),                        //                                            .readdata
+		.dbg_end_sq_s1_address                             (mm_interconnect_0_dbg_end_sq_s1_address),                       //                               dbg_end_sq_s1.address
+		.dbg_end_sq_s1_readdata                            (mm_interconnect_0_dbg_end_sq_s1_readdata),                      //                                            .readdata
 		.dbg_we_s1_address                                 (mm_interconnect_0_dbg_we_s1_address),                           //                                   dbg_we_s1.address
 		.dbg_we_s1_readdata                                (mm_interconnect_0_dbg_we_s1_readdata),                          //                                            .readdata
 		.jtag_uart_0_avalon_jtag_slave_address             (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),       //               jtag_uart_0_avalon_jtag_slave.address
