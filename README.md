@@ -3,7 +3,7 @@
 - 8-bit architecture CPU
 - Very simple but good capable instruction set architecture
 - Also very simple micro-architecture
-- Good for introducing computer architecture education 
+- Good educational materials for entry level computer architecture 
 
 # Instruction Set Architecture of CDEC v
 CDEC v is defined to be a 8-bit CPU architecture consisting of following register set, memory, and instructions.
@@ -22,7 +22,7 @@ FLG = {4'bxxxx, S, Z, Cy, 1'bx}, where S, Z, and Cy are sign, zero, and carry fl
 
 ## memory
 
-CDEC v has 256 byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-bit I/O port.
+CDEC v has a 256-byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-bit I/O port.
 
 | address     | memory            |
 |-------------|-------------------|
@@ -32,7 +32,7 @@ CDEC v has 256 byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-bit
 
 ## statndard instructions
 
-| mnemonic       | machime code  | flag | behavioral description |
+| mnemonic       | machine code  | flag | behavioral description |
 |----------------|---------------|:----:|------------------------|
 |`MOV sreg, dreg`|`000xssdd`     |  --  | dreg <- sreg           |
 |`LD  adrs, dreg`|`100xxxdd adrs`|  --  | dreg <- MEM[adrs]      |
@@ -70,6 +70,7 @@ ss, dd, and rr in machine code are defined as follows.
 Following program counts the number of bit '1' in
 the 8-bit data stored at the memory address 0xFF (I port),
 and outputs the result at the memory address 0x1F and 0xFF (O port).
+
 ``` [bitcount.asm]
         ORG   0x00          ; adrs     code
         LD    ZERO, B       ;  00     82  14
@@ -90,7 +91,8 @@ ZERO:   DB    0x00          ;  14     04
         ORG   0x1F
 RSLT:   DB    0x00          ;  1F     00
 
-; HEX format (ignore under scores '_')
-; :10_0000_00_821481FF21E40BE80EC00442C004A8FF_63
-; :10_0010_00_A814FF00000000000000000000000000_25
+; HEX format
+; :10000000821481FF21E40BE80EC00442C004A8FF63
+; :10001000A814FF0000000000000000000000000025
+; :00000001FF
 ```
