@@ -1,12 +1,27 @@
-# CDEC v (variant or voyager)
-- Yet Another CDEC (Computer Design Education Computer originally developed by Dr. S. Kimura and Dr. A. Kanomata)
+# CDEC v
+Yet another CEDC, CDEC voyager!
+
+# What is CDEC v ?
+CDEC v is a very simple 8-bit CPU architecture, micro-architecture,
+and its implementation on the FPGA board DE0-CV.
+
+CDEC v is a variant version of CDEC, Comuter Design Education Comuter,
+which is originally developed by 
+Prof. S. Kimura (Gunma College, National Institute of Technology) and
+Prof. A. Kanomata (Sendai College, National Institute of Technoloy).
+
+CDEC v has following features.
+
 - 8-bit architecture CPU
 - Very simple but good capable instruction set architecture
-- Also very simple micro-architecture
-- Good educational materials for entry level computer architecture 
+- Also very simple micro-architecture (only one data bus in the datapath unit)
+- You can trace all data transter steps in the datapath unit
+- You can implement your new original instructions, by hacking the controller unit (It's not so difficult!)
+- Suitable for entry level education of comupter architecture
+
 
 # Instruction Set Architecture of CDEC v
-CDEC v is defined to be a 8-bit CPU architecture consisting of following register set, memory, and instructions.
+CDEC v is defined to be a 8-bit CPU architecture consisting of following register set, memory, and standard instructions.
 
 ## register set 
 
