@@ -520,31 +520,31 @@ LOAD d:/altera_lite/15.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3692
+.debug_info     0x0000000000000000     0x367c
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x86 ../cdecv_monitor_bsp//obj/HAL/src/crt0.o
  .debug_info    0x0000000000000086      0x18c obj/default/src/debug_data.o
- .debug_info    0x0000000000000212      0xead obj/default/src/hello_world_small.o
- .debug_info    0x00000000000010bf      0x4eb obj/default/src/memory_data.o
- .debug_info    0x00000000000015aa       0x8b obj/default/src/peripheral_driver/clock.o
- .debug_info    0x0000000000001635      0x3f4 obj/default/src/peripheral_driver/dbg.o
- .debug_info    0x0000000000001a29      0x184 obj/default/src/peripheral_driver/memory.o
- .debug_info    0x0000000000001bad       0x8b obj/default/src/peripheral_driver/reset.o
- .debug_info    0x0000000000001c38      0x1e0 obj/default/src/peripheral_driver/uart.o
- .debug_info    0x0000000000001e18      0x1e6 obj/default/src/utility/hexchar_int.o
- .debug_info    0x0000000000001ffe      0x1e2 obj/default/src/utility/hexformat.o
- .debug_info    0x00000000000021e0      0x285 obj/default/src/utility/monitor_command.o
- .debug_info    0x0000000000002465      0x33b ../cdecv_monitor_bsp/\libhal_bsp.a(alt_getchar.o)
- .debug_info    0x00000000000027a0      0x17b ../cdecv_monitor_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x000000000000291b      0x15d ../cdecv_monitor_bsp/\libhal_bsp.a(alt_putstr.o)
- .debug_info    0x0000000000002a78      0x1af ../cdecv_monitor_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x0000000000002c27      0x1ab ../cdecv_monitor_bsp/\libhal_bsp.a(altera_avalon_uart_read.o)
- .debug_info    0x0000000000002dd2      0x1bf ../cdecv_monitor_bsp/\libhal_bsp.a(altera_avalon_uart_write.o)
- .debug_info    0x0000000000002f91      0x492 ../cdecv_monitor_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_info    0x0000000000003423       0x9f ../cdecv_monitor_bsp/\libhal_bsp.a(alt_errno.o)
- .debug_info    0x00000000000034c2       0x8b ../cdecv_monitor_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_info    0x000000000000354d       0x83 d:/altera_lite/15.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.2/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
- .debug_info    0x00000000000035d0       0xc2 d:/altera_lite/15.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.2/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x0000000000000212      0xe97 obj/default/src/hello_world_small.o
+ .debug_info    0x00000000000010a9      0x4eb obj/default/src/memory_data.o
+ .debug_info    0x0000000000001594       0x8b obj/default/src/peripheral_driver/clock.o
+ .debug_info    0x000000000000161f      0x3f4 obj/default/src/peripheral_driver/dbg.o
+ .debug_info    0x0000000000001a13      0x184 obj/default/src/peripheral_driver/memory.o
+ .debug_info    0x0000000000001b97       0x8b obj/default/src/peripheral_driver/reset.o
+ .debug_info    0x0000000000001c22      0x1e0 obj/default/src/peripheral_driver/uart.o
+ .debug_info    0x0000000000001e02      0x1e6 obj/default/src/utility/hexchar_int.o
+ .debug_info    0x0000000000001fe8      0x1e2 obj/default/src/utility/hexformat.o
+ .debug_info    0x00000000000021ca      0x285 obj/default/src/utility/monitor_command.o
+ .debug_info    0x000000000000244f      0x33b ../cdecv_monitor_bsp/\libhal_bsp.a(alt_getchar.o)
+ .debug_info    0x000000000000278a      0x17b ../cdecv_monitor_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x0000000000002905      0x15d ../cdecv_monitor_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_info    0x0000000000002a62      0x1af ../cdecv_monitor_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000002c11      0x1ab ../cdecv_monitor_bsp/\libhal_bsp.a(altera_avalon_uart_read.o)
+ .debug_info    0x0000000000002dbc      0x1bf ../cdecv_monitor_bsp/\libhal_bsp.a(altera_avalon_uart_write.o)
+ .debug_info    0x0000000000002f7b      0x492 ../cdecv_monitor_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_info    0x000000000000340d       0x9f ../cdecv_monitor_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_info    0x00000000000034ac       0x8b ../cdecv_monitor_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x0000000000003537       0x83 d:/altera_lite/15.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.2/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-int_errno.o)
+ .debug_info    0x00000000000035ba       0xc2 d:/altera_lite/15.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.2/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libsmallc.a(lib_a-strlen.o)
 
 .debug_abbrev   0x0000000000000000     0x12ae
  *(.debug_abbrev)
@@ -626,7 +626,7 @@ LOAD d:/altera_lite/15.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-
  .debug_str     0x0000000000000000      0x138 obj/default/src/debug_data.o
                                         0x142 (size before relaxing)
  .debug_str     0x0000000000000138      0x3e6 obj/default/src/hello_world_small.o
-                                        0x52b (size before relaxing)
+                                        0x513 (size before relaxing)
  .debug_str     0x000000000000051e       0xaa obj/default/src/memory_data.o
                                         0x1f5 (size before relaxing)
  .debug_str     0x00000000000005c8       0x75 obj/default/src/peripheral_driver/clock.o
