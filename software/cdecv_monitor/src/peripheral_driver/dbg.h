@@ -19,9 +19,9 @@ int dbg_xdst();
 int dbg_aluop();
 int dbg_cycle_count();
 
-char dbg_clock();
-char dbg_we();
-char dbg_end_sq();
+int dbg_clock();
+int dbg_we();
+int dbg_end_sq();
 
 
 #endif /* DBG_H_ */

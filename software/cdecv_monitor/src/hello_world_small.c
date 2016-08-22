@@ -332,19 +332,19 @@ void do_CC() {
 
 void do_WE() {
   char tx_msg[20];
-  debugdata8_to_hexformat(dbg_we(), tx_msg);
+  debugdata16_to_hexformat(dbg_we(), tx_msg);
   tx_str(tx_msg);
 }
 
 void do_CL() {
   char tx_msg[20];
-  debugdata8_to_hexformat(dbg_clock(), tx_msg);
+  debugdata16_to_hexformat(dbg_clock(), tx_msg);
   tx_str(tx_msg);
 }
 
 void do_ES() {
   char tx_msg[20];
-  debugdata8_to_hexformat(dbg_end_sq(), tx_msg);
+  debugdata16_to_hexformat(dbg_end_sq(), tx_msg);
   tx_str(tx_msg);
 }
 

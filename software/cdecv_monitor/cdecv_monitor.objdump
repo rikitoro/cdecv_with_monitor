@@ -31,49 +31,49 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 000002e0  00000000  00000000  00002420  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   00003692  00000000  00000000  00002700  2**0
+  9 .debug_info   0000367c  00000000  00000000  00002700  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 000012ae  00000000  00000000  00005d92  2**0
+ 10 .debug_abbrev 000012ae  00000000  00000000  00005d7c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   000010f0  00000000  00000000  00007040  2**0
+ 11 .debug_line   000010f0  00000000  00000000  0000702a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  0000099c  00000000  00000000  00008130  2**2
+ 12 .debug_frame  0000099c  00000000  00000000  0000811c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    00000e4f  00000000  00000000  00008acc  2**0
+ 13 .debug_str    00000e4f  00000000  00000000  00008ab8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00000c47  00000000  00000000  0000991b  2**0
+ 14 .debug_loc    00000c47  00000000  00000000  00009907  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000010  00000000  00000000  0000a564  2**2
+ 15 .debug_alt_sim_info 00000010  00000000  00000000  0000a550  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 00000068  00000000  00000000  0000a578  2**3
+ 16 .debug_ranges 00000068  00000000  00000000  0000a560  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  0000bd88  2**0
+ 17 .thread_model 00000003  00000000  00000000  0000bd70  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000f  00000000  00000000  0000bd8b  2**0
+ 18 .cpu          0000000f  00000000  00000000  0000bd73  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  0000bd9a  2**0
+ 19 .qsys         00000001  00000000  00000000  0000bd82  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  0000bd9b  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  0000bd83  2**0
                   CONTENTS, READONLY
- 21 .sysid_hash   00000004  00000000  00000000  0000bd9c  2**0
+ 21 .sysid_hash   00000004  00000000  00000000  0000bd84  2**0
                   CONTENTS, READONLY
- 22 .sysid_base   00000004  00000000  00000000  0000bda0  2**0
+ 22 .sysid_base   00000004  00000000  00000000  0000bd88  2**0
                   CONTENTS, READONLY
- 23 .sysid_time   00000004  00000000  00000000  0000bda4  2**0
+ 23 .sysid_time   00000004  00000000  00000000  0000bd8c  2**0
                   CONTENTS, READONLY
- 24 .stderr_dev   0000000b  00000000  00000000  0000bda8  2**0
+ 24 .stderr_dev   0000000b  00000000  00000000  0000bd90  2**0
                   CONTENTS, READONLY
- 25 .stdin_dev    00000004  00000000  00000000  0000bdb3  2**0
+ 25 .stdin_dev    00000004  00000000  00000000  0000bd9b  2**0
                   CONTENTS, READONLY
- 26 .stdout_dev   00000004  00000000  00000000  0000bdb7  2**0
+ 26 .stdout_dev   00000004  00000000  00000000  0000bd9f  2**0
                   CONTENTS, READONLY
- 27 .sopc_system_name 00000007  00000000  00000000  0000bdbb  2**0
+ 27 .sopc_system_name 00000007  00000000  00000000  0000bda3  2**0
                   CONTENTS, READONLY
- 28 .quartus_project_dir 00000036  00000000  00000000  0000bdc2  2**0
+ 28 .quartus_project_dir 00000036  00000000  00000000  0000bdaa  2**0
                   CONTENTS, READONLY
- 29 .jdi          000044b9  00000000  00000000  0000bdf8  2**0
+ 29 .jdi          000044b9  00000000  00000000  0000bde0  2**0
                   CONTENTS, READONLY
- 30 .sopcinfo     0007ef91  00000000  00000000  000102b1  2**0
+ 30 .sopcinfo     0007ef91  00000000  00000000  00010299  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00008000 l    d  .entry	00000000 .entry
@@ -855,11 +855,11 @@ void do_WE() {
     8454:	defffa04 	addi	sp,sp,-24
     8458:	dfc00515 	stw	ra,20(sp)
   char tx_msg[20];
-  debugdata8_to_hexformat(dbg_we(), tx_msg);
+  debugdata16_to_hexformat(dbg_we(), tx_msg);
     845c:	0008bf00 	call	8bf0 <dbg_we>
     8460:	1009883a 	mov	r4,r2
     8464:	d80b883a 	mov	r5,sp
-    8468:	00080900 	call	8090 <debugdata8_to_hexformat>
+    8468:	00080580 	call	8058 <debugdata16_to_hexformat>
   tx_str(tx_msg);
     846c:	d809883a 	mov	r4,sp
     8470:	0008d5c0 	call	8d5c <tx_str>
@@ -874,11 +874,11 @@ void do_CL() {
     8480:	defffa04 	addi	sp,sp,-24
     8484:	dfc00515 	stw	ra,20(sp)
   char tx_msg[20];
-  debugdata8_to_hexformat(dbg_clock(), tx_msg);
+  debugdata16_to_hexformat(dbg_clock(), tx_msg);
     8488:	0008be40 	call	8be4 <dbg_clock>
     848c:	1009883a 	mov	r4,r2
     8490:	d80b883a 	mov	r5,sp
-    8494:	00080900 	call	8090 <debugdata8_to_hexformat>
+    8494:	00080580 	call	8058 <debugdata16_to_hexformat>
   tx_str(tx_msg);
     8498:	d809883a 	mov	r4,sp
     849c:	0008d5c0 	call	8d5c <tx_str>
@@ -893,11 +893,11 @@ void do_ES() {
     84ac:	defffa04 	addi	sp,sp,-24
     84b0:	dfc00515 	stw	ra,20(sp)
   char tx_msg[20];
-  debugdata8_to_hexformat(dbg_end_sq(), tx_msg);
+  debugdata16_to_hexformat(dbg_end_sq(), tx_msg);
     84b4:	0008bfc0 	call	8bfc <dbg_end_sq>
     84b8:	1009883a 	mov	r4,r2
     84bc:	d80b883a 	mov	r5,sp
-    84c0:	00080900 	call	8090 <debugdata8_to_hexformat>
+    84c0:	00080580 	call	8058 <debugdata16_to_hexformat>
   tx_str(tx_msg);
     84c4:	d809883a 	mov	r4,sp
     84c8:	0008d5c0 	call	8d5c <tx_str>
@@ -995,7 +995,7 @@ int main()
     8554:	000085e8 	cmpgeui	zero,zero,535
     8558:	000085f0 	cmpltui	zero,zero,535
     855c:	000085f8 	rdprs	zero,zero,535
-    8560:	00008600 	call	860 <__alt_mem_onchip_memory-0x77a0>
+    8560:	00008600 	call	860 <__reset-0x77a0>
     8564:	00008608 	cmpgei	zero,zero,536
     8568:	00008610 	cmplti	zero,zero,536
     856c:	00008618 	cmpnei	zero,zero,536
@@ -1003,7 +1003,7 @@ int main()
     8574:	00008628 	cmpgeui	zero,zero,536
     8578:	00008630 	cmpltui	zero,zero,536
     857c:	00008638 	rdprs	zero,zero,536
-    8580:	00008640 	call	864 <__alt_mem_onchip_memory-0x779c>
+    8580:	00008640 	call	864 <__reset-0x779c>
     8584:	00008648 	cmpgei	zero,zero,537
     8588:	00008650 	cmplti	zero,zero,537
     858c:	00008658 	cmpnei	zero,zero,537
@@ -1908,8 +1908,8 @@ int dbg_cycle_count() {
 00008be4 <dbg_clock>:
 
 
-char dbg_clock() {
-  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_CLOCK_BASE);
+int dbg_clock() {
+  return IORD_ALTERA_AVALON_PIO_DATA(DBG_CLOCK_BASE);
 }
     8be4:	00802c04 	movi	r2,176
     8be8:	10800037 	ldwio	r2,0(r2)
@@ -1917,8 +1917,8 @@ char dbg_clock() {
 
 00008bf0 <dbg_we>:
 
-char dbg_we() {
-  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_WE_BASE);
+int dbg_we() {
+  return IORD_ALTERA_AVALON_PIO_DATA(DBG_WE_BASE);
 }
     8bf0:	00803004 	movi	r2,192
     8bf4:	10800037 	ldwio	r2,0(r2)
@@ -1926,8 +1926,8 @@ char dbg_we() {
 
 00008bfc <dbg_end_sq>:
 
-char dbg_end_sq() {
-  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_END_SQ_BASE);
+int dbg_end_sq() {
+  return IORD_ALTERA_AVALON_PIO_DATA(DBG_END_SQ_BASE);
 }
     8bfc:	00803404 	movi	r2,208
     8c00:	10800037 	ldwio	r2,0(r2)

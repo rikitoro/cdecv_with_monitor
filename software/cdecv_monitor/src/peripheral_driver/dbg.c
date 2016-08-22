@@ -72,14 +72,14 @@ int dbg_cycle_count() {
 }
 
 
-char dbg_clock() {
-  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_CLOCK_BASE);
+int dbg_clock() {
+  return IORD_ALTERA_AVALON_PIO_DATA(DBG_CLOCK_BASE);
 }
 
-char dbg_we() {
-  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_WE_BASE);
+int dbg_we() {
+  return IORD_ALTERA_AVALON_PIO_DATA(DBG_WE_BASE);
 }
 
-char dbg_end_sq() {
-  return (char)IORD_ALTERA_AVALON_PIO_DATA(DBG_END_SQ_BASE);
+int dbg_end_sq() {
+  return IORD_ALTERA_AVALON_PIO_DATA(DBG_END_SQ_BASE);
 }
