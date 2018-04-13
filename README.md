@@ -61,7 +61,7 @@ CDEC v has a 256-byte memory. Address 0x00 ~ 0xFE are RAM area, and $0xFF is 8-b
 |`EOR reg       `|`001111rr`     |  @   | A <- A ^ reg           |
 |`INC reg       `|`010000rr`     |  @   | reg <- reg + 1         |
 |`DEC reg       `|`010001rr`     |  @   | reg <- reg - 1         |
-|`NOR reg       `|`010100rr`     |  @   | reg <- ~reg            |
+|`NOT reg       `|`010100rr`     |  @   | reg <- ~reg            |
 |`JMP adrs      `|`110xxx00 adrs`|  --  | PC <- adrs             |
 |`JS adrs       `|`111100xx adrs`|  --  | PC <- adrs if (S == 1) |
 |`JZ adrs       `|`111010xx adrs`|  --  | PC <- adrs if (Z == 1) |
@@ -108,6 +108,6 @@ RSLT:   DB    0x00          ;  1F     00
 
 ; HEX format
 ; :10000000821481FF21E40BE80EC00442C004A8FF63
-; :10001000A814FF0000000000000000000000000025
+; :10001000A81FFF0000000000000000000000000025
 ; :00000001FF
 ```
